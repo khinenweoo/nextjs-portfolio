@@ -25,6 +25,9 @@ const config = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      primary: "var(--font-jetbrainsMono)",
+    },
     extend: {
       colors: {
         black: {

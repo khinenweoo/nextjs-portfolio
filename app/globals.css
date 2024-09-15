@@ -71,7 +71,16 @@
     @apply border-border !scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply font-primary bg-background text-foreground text-white leading-loose;
+  }
+  .h1 {
+    @apply text-[44px] xl:text-[70px] leading-[1.1] font-semibold;
+  }
+  .h2 {
+    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+  }
+  .h3 {
+    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
   }
   button {
     @apply active:outline-none;
