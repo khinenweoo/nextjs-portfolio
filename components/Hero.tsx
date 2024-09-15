@@ -57,12 +57,12 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex md:flex-row flex-col justify-center items-center relative mt-40 mb-20 z-10">
+      <div className="flex md:flex-row flex-col justify-center items-center relative mt-40 mb-20 z-10" id='about'>
 
         <div className="w-full flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xl text-center text-blue-100 max-w-80 mb-8">
-             About Me
-          </p>
+          <h1 className='heading mb-8'>
+            <span className='text-purple tracking-wider'>About Me</span>
+          </h1>
           
           <p className='text-center md:tracking-wider mb-4 lg:text-1xl leading-10'>
           Hey, I'm a Full-Stack Developer with 4+ years of experience in web development. My expertise in Laravel for API and Backend development, 
