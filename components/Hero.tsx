@@ -60,8 +60,9 @@ const Hero = () => {
       <div className="flex md:flex-row flex-col justify-center items-center relative mt-40 mb-20 z-10" id='about'>
 
         <div className="w-full flex flex-col items-center justify-center">
-          <h1 className='heading mb-8'>
-            <span className='text-purple tracking-wider'>About Me</span>
+          <h1 className='heading mb-8 tracking-wider'>
+            About
+            <span className='text-purple'> Me</span>
           </h1>
           
           <p className='text-center md:tracking-wider mb-4 lg:text-1xl leading-10'>
