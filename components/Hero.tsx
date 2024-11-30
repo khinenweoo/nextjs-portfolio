@@ -3,7 +3,6 @@ import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/TextGenerateEffect'
 import MagicButton from './ui/MagicButton'
 import { FaLocationArrow } from 'react-icons/fa'
-import { sectionImages } from '@/data'
 import Social from './Social'
 import Photo from './Photo'
 

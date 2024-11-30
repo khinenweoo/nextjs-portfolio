@@ -2,6 +2,7 @@ import { projects } from '@/data'
 import React from 'react'
 import { PinContainer } from './ui/3d-pin'
 import { FaLocationArrow } from 'react-icons/fa'
+import Image from 'next/image'
 
 const RecentProjects = () => {
     return (
@@ -16,12 +17,20 @@ const RecentProjects = () => {
                             <PinContainer title={link} href={link}>
                                 <div className='relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden sm:h-[40vh] h-[30vh] mb-10'>
                                     <div className='relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162d]'>
-                                        <img src="/bg.png" alt="bg" />
+                                        <Image
+                                            src="/bg.png"
+                                            alt="background"
+                                            fill
+                                            sizes="(max-width: 1280px) 298px, 320px"
+                                            style={{objectFit: 'cover'}}
+                                        />
                                     </div>
-                                    <img
+                                    <Image
                                         src={img}
                                         alt={title}
-                                        className='z-10 absolute bottom-0'
+                                        fill
+                                        className='z-10 absolute bottom-0 w-auto h-auto'
+                                        priority
                                     />
                                 </div>
                                 <h1 className='font-bold lg:text-2xl md:text-xl text-base line-clamp-1'>
@@ -40,7 +49,13 @@ const RecentProjects = () => {
                                                 transform: `translateX(-${5 * index * 2}px)`
                                             }}
                                             >
-                                                <img src={icon} alt={icon} className='p-2' />
+                                                <Image
+                                                    src={icon}
+                                                    alt={icon}
+                                                    width={32}
+                                                    height={32}
+                                                    className='w-auto h-auto p-2'
+                                                />
                                             </div>
                                         ))}
                                     </div>

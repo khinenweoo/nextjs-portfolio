@@ -1,6 +1,5 @@
 "use client";
 
-import { reverse } from "dns";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -17,13 +16,17 @@ const Photo = () => {
                         opacity: 1, transition: { delay: 2, duration: 0.2, ease: 'easeInOut' },
                     }}
                     className="w-[298px] h-[298px] xl:w-[320px] xl:h-[320px] mix-blend-lighten absolute">
+
+                    {/* (max-width: 1280px) 298px: For screens up to 1280px (before xl breakpoint), use 298px.
+                    320px: For larger screens (xl and above), use 320px */}
                     <Image
                         src="/assets/profile.jpg"
                         priority
                         quality={100}
                         fill
+                        sizes="(max-width: 1280px) 298px, 316px"
                         alt="profile"
-                        className="object-contain rounded-full"
+                        className="object-cover rounded-full"
                     />
                 </motion.div>
 

@@ -5,6 +5,7 @@ import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
+import { color } from "framer-motion";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
@@ -60,6 +61,17 @@ interface WorldProps {
 
 let numbersOfRings = [0];
 
+// color validation helper function
+const isValidColor = (color: any) : boolean => {
+  return typeof color === 'string' && (
+    color.startsWith('#') ||
+    color.startsWith('rgb') ||
+    color.startsWith('rgba')
+  )
+}
+
+const DEFAULT_COLOR = '#FFFFFF';
+
 export function Globe({ globeConfig, data }: WorldProps) {
   const [globeData, setGlobeData] = useState<
     | {
@@ -91,8 +103,19 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
+  // initialize globe material and data after the component mounts
   useEffect(() => {
     if (globeRef.current) {
+
+      //Ensure globe is properly initialized before setting data
+      globeRef.current.globeImageUrl("//unpkg.com/three-globe/example/img/earth-dark.jpg");
+      // Initialize with empty data first
+      globeRef.current
+        .hexPolygonsData([])
+        .arcsData([])
+        .pointsData([]);
+
+      // Then build the data
       _buildData();
       _buildMaterial();
     }
@@ -167,30 +190,58 @@ export function Globe({ globeConfig, data }: WorldProps) {
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
 
-    globeRef.current
-      .arcsData(data)
-      .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
-      .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
-      .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
-      .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-      .arcColor((e: any) => (e as { color: string }).color)
-      .arcAltitude((e) => {
-        return (e as { arcAlt: number }).arcAlt * 1;
-      })
-      .arcStroke((e) => {
-        return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
-      })
-      .arcDashLength(defaultProps.arcLength)
-      .arcDashInitialGap((e) => (e as { order: number }).order * 1)
-      .arcDashGap(15)
-      .arcDashAnimateTime((e) => defaultProps.arcTime);
+    try {
+      // Set arc data with proper type checking
+      type ArcData = Position | { [key: string]: any };
 
-    globeRef.current
-      .pointsData(data)
-      .pointColor((e) => (e as { color: string }).color)
-      .pointsMerge(true)
-      .pointAltitude(0.0)
-      .pointRadius(2);
+      globeRef.current
+        .arcsData(data)
+        .arcStartLat(d => (d as Position).startLat)
+        .arcStartLng(d => (d as Position).startLng)
+        .arcEndLat(d => (d as Position).endLat)
+        .arcEndLng(d => (d as Position).endLng)
+        .arcColor((d: ArcData) => {
+          try {
+            const color = (d as Position).color;
+            // Handle undefined/null case
+            if (!color) return DEFAULT_COLOR;
+            // Validate and return the color
+            return isValidColor(color) ? color : DEFAULT_COLOR;
+          } catch {
+            return DEFAULT_COLOR;
+          }
+        })
+        .arcAltitude((e) => {
+          return (e as { arcAlt: number }).arcAlt * 1;
+        })
+        .arcStroke(() => [0.32, 0.28, 0.3][Math.floor(Math.random() * 2)])
+        .arcDashLength(defaultProps.arcLength)
+        .arcDashGap(15)
+        .arcDashAnimateTime(() => defaultProps.arcTime);
+
+      // Set points with proper validation
+      globeRef.current
+        .pointsData(globeData.filter(d => d.lat !== undefined && d.lng !== undefined))
+        .pointColor(d => {
+          const colorFn = (d as { color: (t: number) => string }).color;
+          try {
+            if (typeof colorFn === 'function') {
+              const result = colorFn(0);
+              return isValidColor(result) ? result : DEFAULT_COLOR;
+            }
+            return DEFAULT_COLOR;
+          } catch {
+            return DEFAULT_COLOR;
+          }
+        })
+        .pointsMerge(true)
+        .pointAltitude(0.0)
+        .pointRadius(2);
+    } catch (error) {
+      console.error('Error in animation:', error);
+    }
+
+
 
     globeRef.current
       .ringsData([])
