@@ -8,7 +8,7 @@ export const navItems = [
   export const gridItems = [
     {
       id: 4,
-      title: "I'm flexible with time zone communications",
+      title: "I'm flexible with time zone communications & locations",
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
@@ -19,8 +19,8 @@ export const navItems = [
     {
       id: 5,
       title: "Tech stacks",
-      description: "I constantly try to improve",
-      className: "md:col-span-3 md:row-span-2",
+      description: "Technologies that help me turn ideas into innovative, functional applications",
+      className: "md:col-span-3 md:row-span-3",
       imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
       titleClassName: "justify-center md:justify-start lg:justify-center",
       img: "",

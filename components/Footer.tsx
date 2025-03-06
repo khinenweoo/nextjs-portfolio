@@ -6,8 +6,8 @@ import Image from 'next/image'
 
 const Footer = () => {
     return (
-        <footer className="w-full pb-10" id='contact'>
-            <div className="w-full left-0 -bottom-72 min-h-52 relative">
+        <footer className="w-full pb-10 " id='contact'>
+            <div className="w-full left-0 -bottom-72 min-h-52 relative mb-[100px]">
             <Image 
                     src="/footer-grid.svg" 
                     alt="grid" 

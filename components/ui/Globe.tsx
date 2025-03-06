@@ -5,7 +5,6 @@ import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
-import { color } from "framer-motion";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
@@ -62,8 +61,9 @@ interface WorldProps {
 let numbersOfRings = [0];
 
 // color validation helper function
-const isValidColor = (color: any) : boolean => {
-  return typeof color === 'string' && (
+const isValidColor = (color: string | undefined | null): boolean => {
+  if (!color) return false;
+  return (
     color.startsWith('#') ||
     color.startsWith('rgb') ||
     color.startsWith('rgba')
@@ -91,8 +91,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
     atmosphereColor: "#ffffff",
     showAtmosphere: true,
     atmosphereAltitude: 0.1,
-    polygonColor: "rgba(255,255,255,0.7)",
-    globeColor: "#1d072e",
+    polygonColor: "rgba(84,84,234,0.7)",
+    globeColor: "#099fc7",
     emissive: "#000000",
     emissiveIntensity: 0.1,
     shininess: 0.9,
@@ -138,7 +138,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   const _buildData = () => {
     const arcs = data;
-    let points = [];
+    const points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
       const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
@@ -180,7 +180,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .showAtmosphere(defaultProps.showAtmosphere)
         .atmosphereColor(defaultProps.atmosphereColor)
         .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor((e) => {
+        .hexPolygonColor(() => {
           return defaultProps.polygonColor;
         });
       startAnimation();
