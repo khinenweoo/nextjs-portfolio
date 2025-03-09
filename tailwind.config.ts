@@ -46,6 +46,7 @@ const config = {
           "100": "#04aecd",
         },
         purple: "#CBACF9",
+        darkpurple: "#5b5169",
         green: "hsl(195 81% 35%)",
         lightblue: "#2596be",
         border: "hsl(var(--border))",

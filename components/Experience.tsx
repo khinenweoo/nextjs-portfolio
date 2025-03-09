@@ -1,42 +1,66 @@
 import { workExperience } from '@/data'
 import React from 'react'
 import { Button } from './ui/MovingBorders'
-import Image from 'next/image'
+import HeadingTitle from './HeadingTitle';
+
 
 const Experience = () => {
   return (
-    <div className='py-20' id='experience'>
-        <h1 className='heading'>
-            Work
-            <span className='text-purple'> Experience</span>
-        </h1>
-        <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
-            {workExperience.map((card) => (
-                <Button
-                key={card.id}
-                duration={Math.floor(Math.random() * 10000) + 10000}
-                borderRadius='1.75rem'
-                className='flex-1 text-white border-neutral-200 dark:border-slate-800'
-                
-                >
-                    <div className='flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2'>
-                        <Image 
-                            src={card.thumbnail}
-                            alt={card.title} // Changed from thumbnail to title for better accessibility
-                            width={128} // Based on lg:w-32 (32 * 4 = 128px)
-                            height={128} // Assuming square image, adjust as needed
-                            className='lg:w-32 md:w-20 w-16'
-                        />
-                        <div className='lg:ms-5'>
-                            <h1 className='text-start text-xl md:text-2xl font-bold'>{card.title}</h1>
-                            <p className='text-start text-white-100 mt-3 font-semibold'>
-                                {card.desc}
-                            </p>
+    <div className='w-full px-6 md:px-12 xl:px-20 mt-40' id='experience'>
+        <HeadingTitle title='Experience' className='flex-row-reverse'/>
+        <p className='text-xl text-center text-gray-300 mb-20'>
+            From concept to deployment, my journey in web development has been driven by a passion for creating tailored, scalable solutions that empower businesses. Let's collaborate to build impactful digital experiences that make a difference.
+        </p>
+        <div className="relative max-w-4xl mx-auto">
+            {/* timeline line */}
+            <div 
+                className="h-screen absolute md:left-1/2 left-0 top-0 -translate-x-1/2 overflow-hidden w-[4px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-700 to-transparent"
+                style={{ height: 700 }}
+            >
+                <div className='absolute inset-x-0 top-0 w-[4px] bg-gradient-to-b from-gray-800 to-slate-900'
+                    style={{ height: 0, opacity: 0 }}
+                ></div>
+            </div>
+            {/* first row */}
+            {
+                workExperience.map((card, index) => (
+                    <div 
+                    key={card.id}
+                    className={`relative flex items-center py-2 px-0 justify-center ${
+                        index % 2 == 0? "md:justify-end" : "md:justify-start"
+                    }`}
+                    >
+
+                        {/* circle */}
+                        <div className="md:left-1/2 left-0 absolute -translate-x-1/2">
+                            <div className="relative h-6 w-6 bg-slate-900 rounded-full border-2 border-[#323133] flex items-center justify-center z-10">
+                            </div>
+                        </div>
+        
+                        {/* card */}
+                        <div className='px-6'>
+                            <Button
+                            duration={Math.floor(Math.random() * 10000) + 10000}
+                            borderRadius='1.75rem'
+                            className='max-w-sm text-white border-neutral-200 dark:border-slate-800 cursor-default'
+                            >
+                                <div className='p-3 py-6 md:p-4 lg:p-6 gap-2'>
+                                    <h1 className='text-start text-xl md:text-2xl font-bold'>{card.title}</h1>
+                                    <p className='text-start text-white-100 mt-3 font-semibold'>
+                                        {card.desc}
+                                    </p>
+
+                                </div>
+                            </Button>
                         </div>
                     </div>
-                </Button>
-            ))}
+                ))
+            }
+
+
+
         </div>
+
     </div>
   )
 }

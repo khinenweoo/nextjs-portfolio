@@ -8,10 +8,11 @@ import Social from "./Social";
 import Photo from "./Photo";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import HeadingTitle from "./HeadingTitle";
 
 const Hero = () => {
   return (
-    <div className="hero mx-auto sm:pb-10 xl:px-20 md:px-12">
+    <div className="hero mx-auto xl:px-20 md:px-12">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 
@@ -53,7 +54,7 @@ const Hero = () => {
             solutions.
           </p>
           <div className="flex flex-col items-start gap-4">
-            <a href="#about">
+            <a href="#about" className="relative w-30">
               <MagicButton
                 title="Let's work together"
                 icon={<FaLocationArrow />}
@@ -155,7 +156,7 @@ const Hero = () => {
               className="absolute right-0 bottom-32"
             >
               <Image
-                src="/hero_bg.png"
+                src="/developer_illustra.png"
                 alt="icon"
                 width={340}
                 height={320}
@@ -166,17 +167,9 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="relative mt-40 mb-32 z-10" id="about">
-        <div className="header_section flex justify-center flex-row-reverse gap-1 mb-10">
-            <div className="header_line w-full h-[1px] bg-[#ebecf3] opacity-30 mt-6"></div>
-            <h3>
-              <div className="relative w-fit overflow-hidden">
-                <span className="header_title text-5xl font-bold text-end tracking-tight p-0">
-                  About<span className="p-0 text-purple">.</span>
-                </span>
-              </div>
-            </h3>
-        </div>
+      <div className="relative mt-40 mb-30 z-10" id="about">
+        <HeadingTitle title="About" className="flex-row-reverse" />
+
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
 
           <div className="col-span-2">

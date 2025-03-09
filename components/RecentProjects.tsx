@@ -2,14 +2,16 @@ import { projects } from '@/data'
 import React from 'react'
 import { PinContainer } from './ui/3d-pin'
 import { FaLocationArrow } from 'react-icons/fa'
-import Image from 'next/image'
+import Image from 'next/image';
+import HeadingTitle from './HeadingTitle';
 
 const RecentProjects = () => {
     return (
-        <div className="py-20" id='projects'>
-            <h1 className='heading'>
-                <span className='text-purple'>Projects</span>
-            </h1>
+        <div className="pt-40" id='projects'>
+            <HeadingTitle title='Projects' className='flex-row'/>
+            <p className='text-xl text-center text-gray-300'>
+            Explore my portfolio projects, crafted with love, expertise, and creativity.
+            </p>
             <div className='flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8'>
                 {
                     projects.map(({ id, title, des, img, iconLists, link }) => (

@@ -15,8 +15,8 @@ export default function Home() {
         <div className="pt-20">
           <Hero />
           <Grid />
-          <RecentProjects />
           <Experience />
+          <RecentProjects />
           <Footer />
         </div>
       </div>
