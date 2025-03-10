@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
@@ -103,25 +103,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
-  // initialize globe material and data after the component mounts
-  useEffect(() => {
-    if (globeRef.current) {
-
-      //Ensure globe is properly initialized before setting data
-      globeRef.current.globeImageUrl("//unpkg.com/three-globe/example/img/earth-dark.jpg");
-      // Initialize with empty data first
-      globeRef.current
-        .hexPolygonsData([])
-        .arcsData([])
-        .pointsData([]);
-
-      // Then build the data
-      _buildData();
-      _buildMaterial();
-    }
-  }, [globeRef.current]);
-
-  const _buildMaterial = () => {
+  const _buildMaterial = useCallback(() => {
     if (!globeRef.current) return;
 
     const globeMaterial = globeRef.current.globeMaterial() as unknown as {
@@ -134,9 +116,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.emissive = new Color(globeConfig.emissive);
     globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
     globeMaterial.shininess = globeConfig.shininess || 0.9;
-  };
+  }, [globeConfig]);
 
-  const _buildData = () => {
+  const _buildData = useCallback(() => {
     const arcs = data;
     const points = [];
     for (let i = 0; i < arcs.length; i++) {
@@ -158,7 +140,6 @@ export function Globe({ globeConfig, data }: WorldProps) {
       });
     }
 
-    // remove duplicates for same lat and lng
     const filteredPoints = points.filter(
       (v, i, a) =>
         a.findIndex((v2) =>
@@ -169,8 +150,27 @@ export function Globe({ globeConfig, data }: WorldProps) {
     );
 
     setGlobeData(filteredPoints);
-  };
+  }, [data, defaultProps.pointSize]);
 
+  // initialize globe material and data after the component mounts
+  useEffect(() => {
+    if (globeRef.current) {
+
+      //Ensure globe is properly initialized before setting data
+      globeRef.current.globeImageUrl("//unpkg.com/three-globe/example/img/earth-dark.jpg");
+      // Initialize with empty data first
+      globeRef.current
+        .hexPolygonsData([])
+        .arcsData([])
+        .pointsData([]);
+
+      // Then build the data
+      _buildData();
+      _buildMaterial();
+    }
+  }, [_buildData, _buildMaterial]);
+
+   // Second useEffect for globe configuration
   useEffect(() => {
     if (globeRef.current && globeData) {
       globeRef.current
@@ -187,7 +187,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     }
   }, [globeData]);
 
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     if (!globeRef.current || !globeData) return;
 
     try {
@@ -241,17 +241,17 @@ export function Globe({ globeConfig, data }: WorldProps) {
       console.error('Error in animation:', error);
     }
 
-
-
     globeRef.current
-      .ringsData([])
-      .ringColor((e: any) => (t: any) => e.color(t))
-      .ringMaxRadius(defaultProps.maxRings)
-      .ringPropagationSpeed(RING_PROPAGATION_SPEED)
-      .ringRepeatPeriod(
-        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
-      );
-  };
+    .ringsData([])
+    .ringColor((e: any) => (t: any) => e.color(t))
+    .ringMaxRadius(defaultProps.maxRings)
+    .ringPropagationSpeed(RING_PROPAGATION_SPEED)
+    .ringRepeatPeriod(
+      (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
+    );
+
+  }, [globeData, data, defaultProps.arcLength, defaultProps.arcTime, defaultProps.maxRings]);
+
 
   useEffect(() => {
     if (!globeRef.current || !globeData) return;
