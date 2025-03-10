@@ -182,7 +182,14 @@ export const BentoGridItem = ({
                 className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
                   }`}
               >
-                <img src="/confetti.gif" alt="confetti" />
+              <Image 
+                src="/confetti.gif"
+                alt="confetti"
+                width={400}  // specify width
+                height={200} // specify height
+                priority={false} // optional: set to true if this is above the fold
+                className="w-auto h-auto" // maintain aspect ratio
+              />
 
                 <Lottie 
                   animationData={animationData} 

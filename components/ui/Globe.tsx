@@ -185,7 +185,13 @@ export function Globe({ globeConfig, data }: WorldProps) {
         });
       startAnimation();
     }
-  }, [globeData]);
+  }, [
+    globeData, 
+    defaultProps.showAtmosphere,
+    defaultProps.atmosphereColor,
+    defaultProps.atmosphereAltitude,
+    defaultProps.polygonColor
+  ]);
 
   const startAnimation = useCallback(() => {
     if (!globeRef.current || !globeData) return;
@@ -237,20 +243,22 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .pointsMerge(true)
         .pointAltitude(0.0)
         .pointRadius(2);
+
+        globeRef.current
+        .ringsData([])
+        .ringColor((e: any) => (t: any) => e.color(t))
+        .ringMaxRadius(defaultProps.maxRings)
+        .ringPropagationSpeed(RING_PROPAGATION_SPEED)
+        .ringRepeatPeriod(
+          (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
+        );
     } catch (error) {
       console.error('Error in animation:', error);
     }
 
-    globeRef.current
-    .ringsData([])
-    .ringColor((e: any) => (t: any) => e.color(t))
-    .ringMaxRadius(defaultProps.maxRings)
-    .ringPropagationSpeed(RING_PROPAGATION_SPEED)
-    .ringRepeatPeriod(
-      (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
-    );
 
-  }, [globeData, data, defaultProps.arcLength, defaultProps.arcTime, defaultProps.maxRings]);
+  }, [globeData, data, defaultProps.arcLength, defaultProps.arcTime, 
+      defaultProps.maxRings, defaultProps.rings]);
 
 
   useEffect(() => {
@@ -272,7 +280,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData]);
+  }, [globeData, data.length]);
 
   return (
     <>
@@ -288,7 +296,7 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, []);
+  }, [gl, size.width, size.height]);
 
   return null;
 }
