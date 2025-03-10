@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
-import { navItems } from "@/data";
 
 import Navbar from "@/components/Navbar";
 

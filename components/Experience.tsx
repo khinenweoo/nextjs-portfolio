@@ -9,7 +9,7 @@ const Experience = () => {
     <div className='w-full px-6 md:px-12 xl:px-20 mt-40' id='experience'>
         <HeadingTitle title='Experience' className='flex-row-reverse'/>
         <p className='text-xl text-center text-gray-300 mb-20'>
-            From concept to deployment, my journey in web development has been driven by a passion for creating tailored, scalable solutions that empower businesses. Let's collaborate to build impactful digital experiences that make a difference.
+            From concept to deployment, my journey in web development has been driven by a passion for creating tailored, scalable solutions that empower businesses. Let&apos;s collaborate to build impactful digital experiences that make a difference.
         </p>
         <div className="relative max-w-4xl mx-auto">
             {/* timeline line */}
