@@ -17,8 +17,7 @@ export function Button({
   containerClassName,
   borderClassName,
   duration,
-  className,
-  ...otherProps
+  className
 }: {
   borderRadius?: string;
   children: React.ReactNode;
@@ -27,7 +26,6 @@ export function Button({
   borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: any;
 }) {
   return (
     <Component
@@ -38,7 +36,6 @@ export function Button({
       style={{
         borderRadius: borderRadius,
       }}
-      {...otherProps}
     >
       <div
         className="absolute inset-0"

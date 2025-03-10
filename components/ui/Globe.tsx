@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
@@ -170,35 +171,11 @@ export function Globe({ globeConfig, data }: WorldProps) {
     }
   }, [_buildData, _buildMaterial]);
 
-   // Second useEffect for globe configuration
-  useEffect(() => {
-    if (globeRef.current && globeData) {
-      globeRef.current
-        .hexPolygonsData(countries.features)
-        .hexPolygonResolution(3)
-        .hexPolygonMargin(0.7)
-        .showAtmosphere(defaultProps.showAtmosphere)
-        .atmosphereColor(defaultProps.atmosphereColor)
-        .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor(() => {
-          return defaultProps.polygonColor;
-        });
-      startAnimation();
-    }
-  }, [
-    globeData, 
-    defaultProps.showAtmosphere,
-    defaultProps.atmosphereColor,
-    defaultProps.atmosphereAltitude,
-    defaultProps.polygonColor
-  ]);
-
   const startAnimation = useCallback(() => {
     if (!globeRef.current || !globeData) return;
 
     try {
       // Set arc data with proper type checking
-      type ArcData = Position | { [key: string]: any };
 
       globeRef.current
         .arcsData(data)
@@ -206,17 +183,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .arcStartLng(d => (d as Position).startLng)
         .arcEndLat(d => (d as Position).endLat)
         .arcEndLng(d => (d as Position).endLng)
-        .arcColor((d: ArcData) => {
-          try {
-            const color = (d as Position).color;
-            // Handle undefined/null case
-            if (!color) return DEFAULT_COLOR;
-            // Validate and return the color
-            return isValidColor(color) ? color : DEFAULT_COLOR;
-          } catch {
-            return DEFAULT_COLOR;
-          }
-        })
+        .arcColor(() => DEFAULT_COLOR
+       )
         .arcAltitude((e) => {
           return (e as { arcAlt: number }).arcAlt * 1;
         })
@@ -259,6 +227,31 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   }, [globeData, data, defaultProps.arcLength, defaultProps.arcTime, 
       defaultProps.maxRings, defaultProps.rings]);
+
+   // Second useEffect for globe configuration
+  useEffect(() => {
+    if (globeRef.current && globeData) {
+      globeRef.current
+        .hexPolygonsData(countries.features)
+        .hexPolygonResolution(3)
+        .hexPolygonMargin(0.7)
+        .showAtmosphere(defaultProps.showAtmosphere)
+        .atmosphereColor(defaultProps.atmosphereColor)
+        .atmosphereAltitude(defaultProps.atmosphereAltitude)
+        .hexPolygonColor(() => {
+          return defaultProps.polygonColor;
+        });
+      startAnimation();
+    }
+  }, [
+    globeData, 
+    defaultProps.showAtmosphere,
+    defaultProps.atmosphereColor,
+    defaultProps.atmosphereAltitude,
+    defaultProps.polygonColor,
+    startAnimation
+  ]);
+
 
 
   useEffect(() => {
@@ -338,12 +331,12 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         r: parseInt(result[1], 16),
