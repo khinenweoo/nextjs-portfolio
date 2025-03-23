@@ -142,24 +142,24 @@ export const navItems = [
   export const workExperience = [
     {
       id: 1,
-      title: "Frontend Engineer Intern",
-      desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+      title: "Web Developer @ GiGA Link Technology",
+      timeline: "Jan 2020 - Feb 2021",
+      desc: "I started my career at GiGA Link, where I built the impactful platform, CBS Learning Hub along with other innovative CMS websites. My contributions and dedication led to a well-earned promotion to Mid-Level Web Developer.",
       className: "md:col-span-2",
-      thumbnail: "/exp1.svg",
     },
     {
       id: 2,
-      title: "Mobile App Dev - JSM Tech",
-      desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-      className: "md:col-span-2", // change to md:col-span-2
-      thumbnail: "/exp2.svg",
+      title: "Senior Web Developer @ AEG",
+      timeline: "March 2021 - May 2022",
+      desc: "Designed and developed responsive web applications using Laravel and Livewire as a lead developer, working on collaborating with cross-functional teams and junior developers to deliver high quality solutions.",
+      className: "md:col-span-2",
     },
     {
       id: 3,
-      title: "Freelance App Dev Project",
-      desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-      className: "md:col-span-2", // change to md:col-span-2
-      thumbnail: "/exp3.svg",
+      title: "Full Stack Developer @ Mahar Net",
+      timeline: "Jul 2022 - Sep 2024",
+      desc: "Contributed to the in-house software development and maintenance of the web portals. Implemented clean, efficient code and streamlined debugging processes, ensuring smooth project execution and client satisfaction.",
+      className: "md:col-span-2", 
     },
   ];
 

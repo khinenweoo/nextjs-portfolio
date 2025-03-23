@@ -156,7 +156,7 @@ const Hero = () => {
               className="absolute right-0 bottom-32"
             >
               <Image
-                src="/developer_illustra.png"
+                src="/hero_bg.png"
                 alt="icon"
                 width={340}
                 height={320}
@@ -175,7 +175,7 @@ const Hero = () => {
           <div className="col-span-2">
             <p className="text-left md:tracking-wide mb-4 lg:text-1xl leading-8">
               Hey, I&apos;m a Full-Stack Developer based in Bangkok, passionate about crafting dynamic and efficient web applications.
-              I have over four years of experience in web development. I specialize in both backend and frontend, primarily PHP, Laravel, Node.js and React.
+              I have over four years of experience in web development. I specialize in both backend and frontend, primarily PHP, Laravel, Vue.js, Node.js and React.
             </p>
             <p>
               A fast learner with a keen eye for innovation, I thrive on leveraging the best tools to build impactful digital solutions.
@@ -183,7 +183,7 @@ const Hero = () => {
               feedback and communication. Let&apos;s collaborate to make your digital vision a reality!
             </p>
 
-            <a href="/resume.pdf" target="_blank" className="max-w-max">
+            <a href="/assets/Khine_Nwe_Oo_Resume.pdf" target="_blank" className="max-w-max">
               <div className="about_link flex items-center gap-2">
                 <span className="text-purple hover:underline text-lg animate-bounce">Get My Resume </span>
                 <div className="lg:w-18 lg:h-14 w-16 h-14 ">

@@ -45,7 +45,8 @@ const Experience = () => {
                             className='max-w-sm text-white border-neutral-200 dark:border-slate-800 cursor-default'
                             >
                                 <div className='p-3 py-6 md:p-4 lg:p-6 gap-2'>
-                                    <h1 className='text-start text-xl md:text-2xl font-bold'>{card.title}</h1>
+                                    <h1 className='text-start text-xl md:text-xl font-bold'>{card.title}</h1>
+                                    <h4 className='text-start text-white-200 md:text-sm font-semibold '>{card.timeline}</h4>
                                     <p className='text-start text-white-100 mt-3 font-semibold'>
                                         {card.desc}
                                     </p>

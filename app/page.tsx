@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
 
 import Navbar from "@/components/Navbar";
+import SpinnerLoader from "@/components/ui/SpinnerLoader";
 
 export default function Home() {
   return (
