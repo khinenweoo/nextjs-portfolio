@@ -5,14 +5,12 @@ import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import MagicButton from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 import Social from "./Social";
-import Photo from "./Photo";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import HeadingTitle from "./HeadingTitle";
 
 const Hero = () => {
   return (
-    <div className="hero mx-auto xl:px-20 md:px-12">
+    <div className="hero mx-auto xl:px-20 md:px-12 md:pt-10 pt-20">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 
@@ -34,7 +32,7 @@ const Hero = () => {
       <div
         className="h-screen w-full dark:bg-[#000] bg-white 
             dark:bg-grid-white/[0.01] bg-grid-black/[0.2] 
-            flex items-center justify-center absolute top-0 left-0"
+            flex justify-center absolute top-0 left-0"
       >
         {/* Radial gradient for the container to give a faded look */}
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-[#000] bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
@@ -42,31 +40,30 @@ const Hero = () => {
 
       <div className="relative flex md:flex-row flex-col items-center justify-center z-10">
         <div className="w-full lg:w-7/12 text-left sm:order-none order-1 flex flex-col justify-center">
-          <h4 className="h4">
-            Hi, my name is
-            <br />
+          <h3 className="h3">
+            Hi, I'm
             <TextGenerateEffect className="h1" words="Khine Nwe Oo" />
-          </h4>
+          </h3>
           <h3 className="text-xl">Full Stack Developer</h3>
-          <p className="max-w-[500px] text-left mb-9 text-white/80">
+          <p className="max-w-[500px] text-left mb-6 text-white/80">
             I excel at crafting elegant digital experiences and I am passionate
             about leveraging the latest technologies to deliver cutting-edge web
             solutions.
           </p>
           <div className="flex flex-col items-start gap-4">
-            <a href="#about" className="relative w-30">
-              <MagicButton
-                title="Let's work together"
-                icon={<FaLocationArrow />}
-                position="right"
-              />
-            </a>
-            <div className="md:mt-4 mb-8 xl:mb-0">
+            <div className="">
               <Social
                 containerStyles="flex gap-6"
                 iconStyles="w-9 h-9 border border-purple rounded-full flex justify-center items-center text-purple text-base hover:bg-purple hover:text-primary hover:transition-all duration-500"
               />
             </div>
+            <a href="#about" className="relative w-16">
+              <MagicButton
+                title="Let's Talk"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </a>
           </div>
         </div>
 
@@ -75,7 +72,7 @@ const Hero = () => {
           {/* programming icons */}
           <div className="relative flex items-center justify-between w-full h-auto">
             <motion.div
-              className="lg:w-18 lg:h-18 w-16 h-16 absolute left-4 top-16"
+              className="lg:w-14 lg:h-14 w-14 h-14 absolute left-8 top-16"
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
@@ -96,7 +93,7 @@ const Hero = () => {
                 }}
               >
                 <Image
-                  src="/reactjs_icon.svg"
+                  src="/assets/icons/Node.js.svg"
                   alt="react"
                   width={140}
                   height={140}
@@ -105,7 +102,7 @@ const Hero = () => {
               </motion.div>
             </motion.div>
             <motion.div
-              className="lg:w-20 lg:h-20 w-16 h-16 absolute -right-10 top-20"
+              className="lg:w-14 lg:h-14 w-12 h-12 absolute -right-6 top-20"
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
@@ -125,10 +122,10 @@ const Hero = () => {
                 }}
               >
                 <Image
-                  src="/nodejs_icon.svg"
+                  src="/assets/icons/React.svg"
                   alt="react"
-                  width={160}
-                  height={160}
+                  width={130}
+                  height={130}
                   className="w-full h-full p-2"
                 />
               </motion.div>
@@ -136,7 +133,7 @@ const Hero = () => {
           </div>
 
           {/* img div */}
-          <div className="flex justify-center h-full">
+          <div className="flex justify-content-end w-full h-full">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{
@@ -153,53 +150,17 @@ const Hero = () => {
                   repeatType: "reverse",
                 },
               }}
-              className="absolute right-0 bottom-32"
+               className="w-[90%] h-[90%] right-80 top-30"
+     
             >
               <Image
-                src="/hero_bg.png"
+                src="/hero_bg.svg"
                 alt="icon"
-                width={340}
-                height={320}
-                className="object-cover object-center w-full h-full"
+                width={290}
+                height={260}
+                className="object-center w-full h-full"
               />
             </motion.div>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative mt-40 mb-30 z-10" id="about">
-        <HeadingTitle title="About" className="flex-row-reverse" />
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-
-          <div className="col-span-2">
-            <p className="text-left md:tracking-wide mb-4 lg:text-1xl leading-8">
-              Hey, I&apos;m a Full-Stack Developer based in Bangkok, passionate about crafting dynamic and efficient web applications.
-              I have over four years of experience in web development. I specialize in both backend and frontend, primarily PHP, Laravel, Vue.js, Node.js and React.
-            </p>
-            <p>
-              A fast learner with a keen eye for innovation, I thrive on leveraging the best tools to build impactful digital solutions.
-              I consistently strive to meet my client&apos;s visions and I am always open to
-              feedback and communication. Let&apos;s collaborate to make your digital vision a reality!
-            </p>
-
-            <a href="/assets/Khine_Nwe_Oo_Resume.pdf" target="_blank" className="max-w-max">
-              <div className="about_link flex items-center gap-2">
-                <span className="text-purple hover:underline text-lg animate-bounce">Get My Resume </span>
-                <div className="lg:w-18 lg:h-14 w-16 h-14 ">
-                  <Image
-                      src="/download_pdf_icon.svg"
-                      alt="react"
-                      width={80}
-                      height={80}
-                      className="w-full h-full"
-                  />
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="col-span-1 flex flex-col items-start justify-center h-0 lg:h-full invisible lg:visible">
-            <Photo />
           </div>
         </div>
       </div>

@@ -15,14 +15,14 @@ const Photo = () => {
                     animate={{
                         opacity: 1, transition: { delay: 1, duration: 0.2, ease: 'easeInOut' },
                     }}
-                    className="w-[200px] h-[200px] xl:w-[240px] xl:h-[240px] mix-blend-lighten relative z-20 overflow-hidden"
+                    className="w-[400px] h-[360px] xl:w-[240px] xl:h-[240px] mix-blend-lighten relative z-20 overflow-hidden"
                 >
                     <Image
-                        src="/assets/profile.jpg"
+                        src="/profile.jpg"
                         priority
                         quality={100}
                         fill
-                        sizes="(max-width: 1280px) 200px, 240px"
+                        sizes="(max-width: 1280px) 400px, 360px"
                         alt="profile"
                         className="rounded-xl border-slate-600 border-2"
                     />

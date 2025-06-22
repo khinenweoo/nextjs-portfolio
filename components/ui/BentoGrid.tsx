@@ -6,13 +6,17 @@ import { IoCopyOutline } from "react-icons/io5";
 import Lottie from "lottie-react";
 
 import { cn } from "@/lib/cn";
+import { leftLists } from '@/data';
+import { middleLists } from '@/data';
+import { rightLists } from '@/data';
 
 
 import { BackgroundGradientAnimation } from "./GradientBg";
 import { GlobeDemo } from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
-import Image from 'next/image'
+import Image from 'next/image';
+import ReactCardFlip from 'react-card-flip';
 
 export const BentoGrid = ({
   className,
@@ -53,9 +57,6 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = [ "HTML", "CSS", "PHP", "JavaScript", "TypeScript"];
-  const middleLists = ["Laravel","VueJS", "React", "Node.js", "Express"];
-  const rightLists = ["Wordpress", "MySQL", "MongoDB", "Redis", "Git"];
 
   const [copied, setCopied] = useState(false);
 
@@ -65,6 +66,45 @@ export const BentoGridItem = ({
     navigator.clipboard.writeText(text);
     setCopied(true);
   };
+
+  const [flippedLeft, setFlippedLeft] = useState(Array(leftLists.length).fill(false));
+  const [flippedMiddle, setFlippedMiddle] = useState(Array(middleLists.length).fill(false));
+  const [flippedRight, setFlippedRight] = useState(Array(rightLists.length).fill(false));
+
+  const handleMouseEnter = (listName: string, index: number) => {
+    if (listName === 'left') {
+      // Create a copy of the current flipped states
+      const updated = [...flippedLeft];
+      // Toggle the flipped state for the clicked card
+      updated[index] = true;
+      // Update the state
+      setFlippedLeft(updated);
+    } else if (listName === 'middle') {
+      const updated = [...flippedMiddle];
+      updated[index] = true;
+      setFlippedMiddle(updated);
+    } else if (listName === 'right') {
+      const updated = [...flippedRight];
+      updated[index] = true;
+      setFlippedRight(updated);
+    }
+  }
+
+  const handleMouseLeave = (listName: string, index: number) => {
+    if (listName === 'left') {
+      const updated = [...flippedLeft];
+      updated[index] = false;
+      setFlippedLeft(updated);
+    } else if (listName === 'middle') {
+      const updated = [...flippedMiddle];
+      updated[index] = false;
+      setFlippedMiddle(updated);
+    } else if (listName === 'right') {
+      const updated = [...flippedRight];
+      updated[index] = false;
+      setFlippedRight(updated);
+    }
+  }
 
   return (
     <div
@@ -115,17 +155,17 @@ export const BentoGridItem = ({
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-8"
+            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full lg:min-h-48 min-h-80 flex flex-col px-5 p-5 lg:p-8"
           )}
         >
           {/* change the order of the title and des, font-extralight, remove text-xs text-neutral-600 dark:text-neutral-300 , change the text-color */}
-          <div className="font-sans font-extralight md:max-w-48 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
+          <div className="font-sans font-extralight max-w-[30%] md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
             {description}
           </div>
           {/* add text-3xl max-w-96 , remove text-neutral-600 dark:text-neutral-300*/}
           {/* remove mb-2 mt-2 */}
           <div
-            className={`font-sans text-lg lg:text-2xl max-w-96 font-bold z-10 pb-3`}
+            className={`font-sans text-lg lg:text-2xl max-w-full font-bold z-10 pb-3`}
           >
             {title}
           </div>
@@ -135,39 +175,111 @@ export const BentoGridItem = ({
 
           {/* Tech stack list div */}
           {id === 5 && (
-            <div className="flex gap-1 py-3 lg:gap-5 w-fit absolute right-3 lg:right-5">
+            <div className="flex gap-2 py-3 lg:gap-3 w-fit absolute right-3 lg:right-5">
               {/* tech stack lists */}
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
                 {leftLists.map((item, i) => (
-                  <span
+                  <div
                     key={i}
-                    className="lg:py-2 lg:px-2 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-3xl text-center bg-[#232323]"
+                    className="m-1 cursor-pointer"
                   >
-                    {item}
-                  </span>
+                    <ReactCardFlip isFlipped={flippedLeft[i]}>
+                      <div
+                        onMouseEnter={() => handleMouseEnter('left', i)}
+                        onMouseLeave={() => handleMouseLeave('left', i)}
+                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
+                        lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
+                      >
+                        <Image
+                          src={item.path}
+                          alt={item.title}
+                          width={20}
+                          height={20}
+                          className="w-16 h-10 p-1 mx-auto"
+                        />
+                      </div>
+                      <div
+                        onMouseEnter={() => handleMouseEnter('left', i)}
+                        onMouseLeave={() => handleMouseLeave('left', i)}
+                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
+                        lg:opacity-100 border border-[#6a6e75] rounded-sm">
+                          <div className=" w-16 h-10 p-1  flex items-center justify-center">
+                            {item.title}
+                          </div>
+                      </div>
+                    </ReactCardFlip>
+
+                  </div>
                 ))}
               </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
                 {middleLists.map((item, i) => (
-                  <span
+                  <div
                     key={i}
-                    className="lg:py-2 lg:px-2 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-3xl text-center bg-[#232323]"
+                    className="m-1 cursor-pointer"
                   >
-                    {item}
-                  </span>
+                    <ReactCardFlip isFlipped={flippedMiddle[i]}>
+                      <div
+                        onMouseEnter={() => handleMouseEnter('middle', i)}
+                        onMouseLeave={() => handleMouseLeave('middle', i)}
+                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
+                        lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
+                      >
+                        <Image
+                          src={item.path}
+                          alt={item.title}
+                          width={20}
+                          height={20}
+                          className="w-16 h-10 p-1 mx-auto"
+                        />
+                      </div>
+                      <div
+                        onMouseEnter={() => handleMouseEnter('middle', i)}
+                        onMouseLeave={() => handleMouseLeave('middle', i)}
+                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
+                        lg:opacity-100 border border-[#6a6e75] rounded-sm">
+                          <div className=" w-16 h-10 p-1  flex items-center justify-center">
+                            {item.title}
+                          </div>
+                      </div>
+                    </ReactCardFlip>
+
+                  </div>
                 ))}
               </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
                 {rightLists.map((item, i) => (
-                  <span
+                  <div
                     key={i}
-                    className="lg:py-2 lg:px-2 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-3xl text-center bg-[#232323]"
+                    className="m-1 cursor-pointer"
                   >
-                    {item}
-                  </span>
+                    <ReactCardFlip isFlipped={flippedRight[i]}>
+                      <div
+                        onMouseEnter={() => handleMouseEnter('right', i)}
+                        onMouseLeave={() => handleMouseLeave('right', i)}
+                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
+                        lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
+                      >
+                        <Image
+                          src={item.path}
+                          alt={item.title}
+                          width={20}
+                          height={20}
+                          className="w-16 h-10 p-1 mx-auto"
+                        />
+                      </div>
+                      <div
+                        onMouseEnter={() => handleMouseEnter('right', i)}
+                        onMouseLeave={() => handleMouseLeave('right', i)}
+                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
+                        lg:opacity-100 border border-[#6a6e75] rounded-sm">
+                          <div className=" w-16 h-10 p-1  flex items-center justify-center">
+                            {item.title}
+                          </div>
+                      </div>
+                    </ReactCardFlip>
+
+                  </div>
                 ))}
               </div>
             </div>
@@ -182,20 +294,19 @@ export const BentoGridItem = ({
                 className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
                   }`}
               >
-              <Image 
-                src="/confetti.gif"
-                alt="confetti"
-                width={400}  // specify width
-                height={200} // specify height
-                priority={false} // optional: set to true if this is above the fold
-                className="w-auto h-auto" // maintain aspect ratio
-              />
+                <Image
+                  src="/confetti.gif"
+                  alt="confetti"
+                  width={400}  // specify width
+                  height={200} // specify height
+                  priority={false} // optional: set to true if this is above the fold
+                  className="w-auto h-auto" // maintain aspect ratio
+                />
 
-                <Lottie 
-                  animationData={animationData} 
+                <Lottie
+                  animationData={animationData}
                   loop={copied}
                   autoplay={copied}
-                  style={{ height: 200, width: 400 }}
                 />
               </div>
 

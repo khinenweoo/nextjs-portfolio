@@ -71,7 +71,7 @@ const isValidColor = (color: string | undefined | null): boolean => {
   )
 }
 
-const DEFAULT_COLOR = '#FFFFFF';
+const DEFAULT_COLOR = '#cbacf9';
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const [globeData, setGlobeData] = useState<
@@ -89,7 +89,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   const defaultProps = {
     pointSize: 1,
-    atmosphereColor: "#ffffff",
+    atmosphereColor: "#CBACF9",
     showAtmosphere: true,
     atmosphereAltitude: 0.1,
     polygonColor: "rgba(84,84,234,0.7)",

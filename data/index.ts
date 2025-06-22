@@ -13,7 +13,7 @@ export const navItems = [
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
       titleClassName: "justify-start",
-      img: "/grid.svg",
+      img: "",
       spareImg: "/b4.svg",
     },
     {
@@ -24,7 +24,7 @@ export const navItems = [
       imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
       titleClassName: "justify-center md:justify-start lg:justify-center",
       img: "",
-      spareImg: "/grid.svg",
+      spareImg: "",
     },
     {
       id: 6,
@@ -32,7 +32,7 @@ export const navItems = [
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-1",
       imgClassName: "",
-      titleClassName: "justify-center md:max-w-full max-w-60 text-center",
+      titleClassName: "justify-center lg:max-w-full max-w-[80%] text-center",
       img: "",
       spareImg: "",
     },
@@ -41,103 +41,42 @@ export const navItems = [
   export const projects = [
     {
       id: 1,
-      title: "3D Solar System Planets to Explore",
-      des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-      img: "/p1.svg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-      link: "https://github.com/adrianhajdin?tab=repositories",
+      title: "Smart Spender",
+      des: "Smart Spend is a personal finance tracker app which offer users to take control of financial habits by tracking their income and expenses. It allow users to manage, view and filter all financial records. With real-time updates and user friendly design, this app help you to analyze their cash flow and make budgeting decisions.",
+      img: "/proj1.png",
+      iconLists: ["/re.svg", "/laravel.svg", "/sass.svg"],
+      link: "https://smartspender-track.vercel.app/",
+      linkText: "Check Live Site",
     },
     {
       id: 2,
-      title: "Yoom - Video Conferencing App",
-      des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-      img: "/p2.svg",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-      link: "https://github.com/adrianhajdin/zoom-clone",
+      title: "ProJix",
+      des: "ProJix provides Admin Panel that allow users to create projects and manage associated tasks with role-based access control for Admins and Members. Admins can manage users and assign tasks, while members can add, edit, delete, and mark their tasks as complete. Features include a personalized dashboard per role, smart task filtering (by name, priority, and status), and seamless user-task assignment.",
+      img: "/proj2.png",
+      iconLists: ["/php.svg", "/laravel.svg", "/re.svg", "/tail.svg"],
+      link: "https://project-creator.laravel.cloud/",
+      linkText: "Check Live Site",
     },
     {
       id: 3,
-      title: "AI Image SaaS - Canva Application",
-      des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-      img: "/p3.svg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-      link: "https://github.com/adrianhajdin/ai_saas_app",
+      title: "Proud of Myanmar",
+      des: "ProudofMyanmar is an multi vendor marketplace platform that lets customers shopping across a variety of products from local brand sellers with one easy checkout.",
+      img: "/proj3.png",
+      iconLists: ["/php.svg","/laravel.svg", "/js.svg", "/sass.svg", ],
+      link: "https://github.com/khinenweoo/multivendor-ecommerce",
+      linkText: "View Github Repo",
     },
     {
       id: 4,
-      title: "Animated Apple Iphone 3D Website",
-      des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-      img: "/p4.svg",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-      link: "https://github.com/adrianhajdin/iphone",
+      title: "LMS",
+      des: "LMS is a learning management platform built with Laravel and Livewire. LMS lets admin create courses and assign it to instructors. Instructors can upload learning materials.",
+      img: "/proj4.jpg",
+      iconLists: [ "/php.svg", "/laravel.svg","/js.svg", "assets/icons/Livewire.svg",],
+      link: "https://github.com/khinenweoo/lms-app",
+      linkText: "View Github Repo",
     },
   ];
   
-  export const testimonials = [
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-  ];
-  
-  export const companies = [
-    {
-      id: 1,
-      name: "cloudinary",
-      img: "/cloud.svg",
-      nameImg: "/cloudName.svg",
-    },
-    {
-      id: 2,
-      name: "appwrite",
-      img: "/app.svg",
-      nameImg: "/appName.svg",
-    },
-    {
-      id: 3,
-      name: "HOSTINGER",
-      img: "/host.svg",
-      nameImg: "/hostName.svg",
-    },
-    {
-      id: 4,
-      name: "stream",
-      img: "/s.svg",
-      nameImg: "/streamName.svg",
-    },
-    {
-      id: 5,
-      name: "docker.",
-      img: "/dock.svg",
-      nameImg: "/dockerName.svg",
-    },
-  ];
   
   export const workExperience = [
     {
@@ -170,17 +109,72 @@ export const navItems = [
     }
   ];
   
-  export const socialMedia = [
+
+  export const leftLists = [
     {
-      id: 1,
-      img: "/git.svg",
+      title: "PHP",
+      path: "/assets/icons/PHP.svg",
     },
     {
-      id: 2,
-      img: "/twit.svg",
+      title: "Laravel",
+      path: "/assets/icons/Laravel.svg",
     },
     {
-      id: 3,
-      img: "/link.svg",
+      title: "Node.js",
+      path: "/assets/icons/Node.js.svg",
+    },
+    {
+      title: "Express.js",
+      path: "/assets/icons/Express.svg",
+    },
+    {
+      title: "TypeScript",
+      path: "/assets/icons/TypeScript.svg",
     },
   ];
+
+  export const middleLists = [
+    {
+      title: "JavaScript",
+      path: "/assets/icons/JavaScript.svg",
+    },
+    {
+      title: "Vue.js",
+      path: "/assets/icons/Vue.js.svg",
+    },
+    {
+      title: "React",
+      path: "/assets/icons/React.svg",
+    },
+    {
+      title: "Livewire",
+      path: "/assets/icons/Livewire.svg",
+    },
+    {
+      title: "Redux",
+      path: "/assets/icons/Redux.svg",
+    },
+  ];
+
+  export const rightLists = [
+      {
+        title: "Wordpress",
+        path: "/assets/icons/Wordpress.svg",
+      },
+      {
+        title: "MySQL",
+        path: "/assets/icons/MySQL.svg",
+      },
+      {
+        title: "MongoDB",
+        path: "/assets/icons/MongoDB.svg",
+      },
+      {
+        title: "Git",
+        path: "/assets/icons/Git.svg",
+      },
+      {
+        title: "Firebase",
+        path: "/assets/icons/Firebase.svg",
+      },
+    ];
