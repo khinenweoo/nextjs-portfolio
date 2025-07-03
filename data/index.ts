@@ -42,7 +42,7 @@ export const navItems = [
     {
       id: 1,
       title: "Mern Chat",
-      des: "Mern Chat is a personal finance tracker app built with Mern Stack and TailwindCSS. It aims to offer users to take control of financial habits by tracking their income and expenses. It allow users to manage, view and filter all their personal financial records. With real-time updates and user friendly design, the app helps you to analyze your cash flow and make budgeting decisions.",
+      des: "Mern Chat is a real-time messaging app which uses Socket.io to make every message real-time and pop up fastly. The tech stack used for this app are MERN, Socket.io, TailwindCSS and Daisy UI. It includes authentication with JWT, online user status, user setting features and profile as well",
       img: "/p1.svg",
       iconLists: ["/assets/icons/Node.js.svg", "/assets/icons/MongoDB.svg", "/assets/icons/React.svg", "/tail.svg"],
       link: "https://smartspender-track.vercel.app/",
@@ -52,7 +52,7 @@ export const navItems = [
       id: 2,
       title: "Smart Spender",
       des: "Smart Spender is a personal finance tracker app built with Mern Stack and TailwindCSS. It aims to offer users to take control of financial habits by tracking their income and expenses. It allow users to manage, view and filter all their personal financial records. With real-time updates and user friendly design, the app helps you to analyze your cash flow and make budgeting decisions.",
-      img: "/p2.svg",
+      img: "/p2.png",
       iconLists: ["/assets/icons/Node.js.svg", "/assets/icons/MongoDB.svg", "/assets/icons/React.svg", "/tail.svg"],
       link: "https://smartspender-track.vercel.app/",
       linkText: "Check Live Site",

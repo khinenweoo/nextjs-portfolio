@@ -104,3 +104,9 @@
 .w-1\/2 {
     width: 50%!important;
 }
+
+.proj_card {
+    will-change: transform; /* GPU acceleration */
+    backface-visibility: hidden; /* Prevent flickering */
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
