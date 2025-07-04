@@ -6,9 +6,7 @@ import { IoCopyOutline } from "react-icons/io5";
 import Lottie from "lottie-react";
 
 import { cn } from "@/lib/cn";
-import { leftLists } from '@/data';
-import { middleLists } from '@/data';
-import { rightLists } from '@/data';
+import { rightLists, techList } from '@/data';
 
 
 import { BackgroundGradientAnimation } from "./GradientBg";
@@ -67,46 +65,29 @@ export const BentoGridItem = ({
     setCopied(true);
   };
 
-  const [flippedLeft, setFlippedLeft] = useState(Array(leftLists.length).fill(false));
-  const [flippedMiddle, setFlippedMiddle] = useState(Array(middleLists.length).fill(false));
-  const [flippedRight, setFlippedRight] = useState(Array(rightLists.length).fill(false));
+  const [flippedCard, setFlippedCard] = useState(Array(techList.length).fill(false));
 
   const handleMouseEnter = (listName: string, index: number) => {
-    if (listName === 'left') {
+    if (listName === 'card') {
       // Create a copy of the current flipped states
-      const updated = [...flippedLeft];
+      const updated = [...flippedCard];
       // Toggle the flipped state for the clicked card
       updated[index] = true;
       // Update the state
-      setFlippedLeft(updated);
-    } else if (listName === 'middle') {
-      const updated = [...flippedMiddle];
-      updated[index] = true;
-      setFlippedMiddle(updated);
-    } else if (listName === 'right') {
-      const updated = [...flippedRight];
-      updated[index] = true;
-      setFlippedRight(updated);
-    }
+      setFlippedCard(updated);
+    } 
   }
 
   const handleMouseLeave = (listName: string, index: number) => {
-    if (listName === 'left') {
-      const updated = [...flippedLeft];
+    if (listName === 'card') {
+      const updated = [...flippedCard];
       updated[index] = false;
-      setFlippedLeft(updated);
-    } else if (listName === 'middle') {
-      const updated = [...flippedMiddle];
-      updated[index] = false;
-      setFlippedMiddle(updated);
-    } else if (listName === 'right') {
-      const updated = [...flippedRight];
-      updated[index] = false;
-      setFlippedRight(updated);
-    }
+      setFlippedCard(updated);
+    } 
   }
 
   return (
+
     <div
       className={cn(
         "row-span-1 relative overflow-hidden rounded-2xl outline outline-1 outline-[#323133] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
@@ -155,19 +136,19 @@ export const BentoGridItem = ({
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full lg:min-h-48 min-h-80 flex flex-col px-5 p-5 lg:p-8"
+            "group-hover/bento:translate-x-2 transition duration-200 relative flex flex-col px-5 p-5 lg:p-8"
           )}
         >
-          {/* change the order of the title and des, font-extralight, remove text-xs text-neutral-600 dark:text-neutral-300 , change the text-color */}
-          <div className="font-sans font-extralight max-w-[30%] md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
-            {description}
-          </div>
+
           {/* add text-3xl max-w-96 , remove text-neutral-600 dark:text-neutral-300*/}
           {/* remove mb-2 mt-2 */}
           <div
-            className={`font-sans text-lg lg:text-2xl max-w-full font-bold z-10 pb-3`}
+            className={`font-sans text-lg lg:text-2xl font-bold z-10 pb-3`}
           >
             {title}
+          </div>
+          <div className="font-sans font-extralight md:text-xs lg:text-base text-sm text-[#C1C2D3]">
+            {description}
           </div>
 
           {/* for the github 3d globe */}
@@ -175,114 +156,49 @@ export const BentoGridItem = ({
 
           {/* Tech stack list div */}
           {id === 5 && (
-            <div className="flex gap-2 py-3 lg:gap-3 w-fit absolute right-3 lg:right-5">
-              {/* tech stack lists */}
-              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
-                {leftLists.map((item, i) => (
-                  <div
-                    key={i}
-                    className="m-1 cursor-pointer"
-                  >
-                    <ReactCardFlip isFlipped={flippedLeft[i]}>
-                      <div
-                        onMouseEnter={() => handleMouseEnter('left', i)}
-                        onMouseLeave={() => handleMouseLeave('left', i)}
-                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
-                        lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
-                      >
-                        <Image
-                          src={item.path}
-                          alt={item.title}
-                          width={20}
-                          height={20}
-                          className="w-16 h-10 p-1 mx-auto"
-                        />
-                      </div>
-                      <div
-                        onMouseEnter={() => handleMouseEnter('left', i)}
-                        onMouseLeave={() => handleMouseLeave('left', i)}
-                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
-                        lg:opacity-100 border border-[#6a6e75] rounded-sm">
-                          <div className=" w-16 h-10 p-1  flex items-center justify-center">
-                            {item.title}
+            <div className="relative mt-4 h-full py-3">
+              <div className="w-full grid grid-cols-4 lg:grid-cols-5 gap-2 ">
+                {
+                  techList.map((item, i) => (
+                    <div 
+                      key={i}
+                      className=""
+                    >
+                      <div className="m-1 cursor-pointer">
+                        <ReactCardFlip isFlipped={flippedCard[i]}>
+                          <div
+                            onMouseEnter={() => handleMouseEnter('card', i)}
+                            onMouseLeave={() => handleMouseLeave('card', i)}
+                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
+                            lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
+                          >
+                            <Image
+                              src={item.path}
+                              alt={item.title}
+                              width={20}
+                              height={20}
+                              className="w-16 h-10 p-1 mx-auto"
+                            />
                           </div>
-                      </div>
-                    </ReactCardFlip>
-
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
-                {middleLists.map((item, i) => (
-                  <div
-                    key={i}
-                    className="m-1 cursor-pointer"
-                  >
-                    <ReactCardFlip isFlipped={flippedMiddle[i]}>
-                      <div
-                        onMouseEnter={() => handleMouseEnter('middle', i)}
-                        onMouseLeave={() => handleMouseLeave('middle', i)}
-                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
-                        lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
-                      >
-                        <Image
-                          src={item.path}
-                          alt={item.title}
-                          width={20}
-                          height={20}
-                          className="w-16 h-10 p-1 mx-auto"
-                        />
-                      </div>
-                      <div
-                        onMouseEnter={() => handleMouseEnter('middle', i)}
-                        onMouseLeave={() => handleMouseLeave('middle', i)}
-                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
-                        lg:opacity-100 border border-[#6a6e75] rounded-sm">
-                          <div className=" w-16 h-10 p-1  flex items-center justify-center">
-                            {item.title}
+                          <div
+                            onMouseEnter={() => handleMouseEnter('card', i)}
+                            onMouseLeave={() => handleMouseLeave('card', i)}
+                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
+                            lg:opacity-100 border border-[#6a6e75] rounded-sm">
+                              <div className="w-16 h-10 p-1 mx-auto">
+                                {item.title}
+                              </div>
                           </div>
-                      </div>
-                    </ReactCardFlip>
+                        </ReactCardFlip>
 
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
-                {rightLists.map((item, i) => (
-                  <div
-                    key={i}
-                    className="m-1 cursor-pointer"
-                  >
-                    <ReactCardFlip isFlipped={flippedRight[i]}>
-                      <div
-                        onMouseEnter={() => handleMouseEnter('right', i)}
-                        onMouseLeave={() => handleMouseLeave('right', i)}
-                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
-                        lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
-                      >
-                        <Image
-                          src={item.path}
-                          alt={item.title}
-                          width={20}
-                          height={20}
-                          className="w-16 h-10 p-1 mx-auto"
-                        />
                       </div>
-                      <div
-                        onMouseEnter={() => handleMouseEnter('right', i)}
-                        onMouseLeave={() => handleMouseLeave('right', i)}
-                        className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
-                        lg:opacity-100 border border-[#6a6e75] rounded-sm">
-                          <div className=" w-16 h-10 p-1  flex items-center justify-center">
-                            {item.title}
-                          </div>
-                      </div>
-                    </ReactCardFlip>
-
-                  </div>
-                ))}
+                    </div>
+                  ))
+                }
+             
               </div>
             </div>
+
           )}
           {id === 6 && (
             <div className="mt-5 relative">

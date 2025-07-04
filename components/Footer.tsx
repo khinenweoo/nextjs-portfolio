@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
 
             <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
-                <p className="md:text-base text-sm md:font-normal font-light">© 2024 Khine Nwe Oo.</p>
+                <p className="md:text-base text-sm md:font-normal font-light">© 2025 Khine Nwe Oo.</p>
                 <div className="flex items-center md:gp-3 gap-6">
                     {socials.map((item, index) => {
                         return <Link key={index} href={item.path} className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300">

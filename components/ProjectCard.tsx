@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { cn } from "@/lib/cn";
 import { FaLocationArrow } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa'
 import Image from 'next/image';
