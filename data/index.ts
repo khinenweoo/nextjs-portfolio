@@ -45,8 +45,8 @@ export const projects = [
     des: "Mern Chat is a real-time messaging app which uses Socket.io to make every message real-time and pop up fastly. The tech stack used for this app are MERN, Socket.io, TailwindCSS and Daisy UI. It includes authentication with JWT, online user status, user setting features and profile as well",
     img: "/p1.svg",
     iconLists: ["/assets/icons/Node.js.svg", "/assets/icons/MongoDB.svg", "/assets/icons/React.svg", "/tail.svg"],
-    link: "https://smartspender-track.vercel.app/",
-    linkText: "Check Live Site",
+    link: "https://mernlivechat.onrender.com/",
+    gitrepo: "https://github.com/khinenweoo/chat-app-socketio",
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ export const projects = [
     img: "/p2.png",
     iconLists: ["/assets/icons/Node.js.svg", "/assets/icons/MongoDB.svg", "/assets/icons/React.svg", "/tail.svg"],
     link: "https://smartspender-track.vercel.app/",
-    linkText: "Check Live Site",
+    gitrepo: "https://github.com/khinenweoo/mern-personal-finance-tracker",
   },
   {
     id: 3,
@@ -64,7 +64,7 @@ export const projects = [
     img: "/p3.svg",
     iconLists: ["/php.svg", "/laravel.svg", "/re.svg", "/tail.svg"],
     link: "https://project-creator.laravel.cloud/",
-    linkText: "Check Live Site",
+    gitrepo: "https://github.com/khinenweoo/Project-Creator-App",
   },
   {
     id: 4,
@@ -73,7 +73,7 @@ export const projects = [
     img: "/p4.png",
     iconLists: ["/php.svg", "/laravel.svg", "/js.svg", "/sass.svg", "assets/icons/Livewire.svg"],
     link: "https://github.com/khinenweoo/multivendor-ecommerce",
-    linkText: "View Github Repo",
+    gitrepo: "https://github.com/khinenweoo/multivendor-ecommerce",
   },
   {
     id: 5,
@@ -82,25 +82,34 @@ export const projects = [
     img: "/p5.jpg",
     iconLists: ["/php.svg", "/laravel.svg", "/js.svg", "assets/icons/Livewire.svg",],
     link: "https://github.com/khinenweoo/lms-app",
-    linkText: "View Github Repo",
+    gitrepo: "https://github.com/khinenweoo/lms-app",
   },
   {
     id: 6,
     title: "Mahar NET User App",
-    des: "LMS is a learning platform where users can explore detailed information about classes and enroll various courses. Built with Laravel and Livewire, the platform allow students to browse course offerings and connect administrator through Messenger chat to enroll. It offer admin portal to create courses, upload lessons and assign to the owner of the instructor. It aims to create a seamless user experience, empowering learners to easily access educational opportunities tailored to their needs.",
+    des: "The app is a mobile app which aims for customers who are using Mahar NET internet services. My role involves to implement Restful API data for this app. The features includes upgrade/downgrade data plans, request relocation, view bills, open complaint ticket and so on.",
     img: "/p6.jpg",
     iconLists: ["/php.svg", "/laravel.svg", "/js.svg", "assets/icons/Livewire.svg",],
     link: "https://play.google.com/store/apps/details?id=com.maharnet.app&hl=en",
-    linkText: "Check Live Site",
+    gitrepo: "",
   },
   {
     id: 7,
     title: "Mahar NET User Portal",
-    des: "The system have modules and features for User App management operations including billing, finance, complaint ticketing and sale care for ISP company's customers.",
+    des: "The system have modules for User App management operations including billing, finance, complaint ticketing and sale care for ISP company's customers. The platform offers real-time notification of user's activities while using the app along with other features.",
     img: "/userapp-admin.png",
     iconLists: ["/php.svg", "/laravel.svg", "/js.svg", "assets/icons/Vue.js.svg", "assets/icons/Firebase.svg"],
     link: "https://userapp.maharnet.com/admin/login",
-    linkText: "Check Live Site",
+    gitrepo: "",
+  },
+  {
+    id: 8,
+    title: "CBS - Centre for Behavioral Science",
+    des: "CBS is an educational platform built with WordPress. My role involves designing user interface and integrating plugins and customized the required features such as Event reigsteration. Designed with a dynamic user-friendly interface, it provides an efficient way to register a range of programs, seminars and workshops through the platform. ",
+    img: "/cbs.png",
+    iconLists: ["/assets/icons/Wordpress.svg","/php.svg", "/js.svg"],
+    link: "https://www.cbs.com.sg/",
+    gitrepo: "",
   },
 ];
 
@@ -199,8 +208,3 @@ export const techList = [
   },
 ];
 
-
-
-export const rightLists = [
-
-];

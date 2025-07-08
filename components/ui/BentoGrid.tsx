@@ -6,7 +6,7 @@ import { IoCopyOutline } from "react-icons/io5";
 import Lottie from "lottie-react";
 
 import { cn } from "@/lib/cn";
-import { rightLists, techList } from '@/data';
+import { techList } from '@/data';
 
 
 import { BackgroundGradientAnimation } from "./GradientBg";
@@ -157,7 +157,7 @@ export const BentoGridItem = ({
           {/* Tech stack list div */}
           {id === 5 && (
             <div className="relative mt-4 h-full py-3">
-              <div className="w-full grid grid-cols-4 lg:grid-cols-5 gap-2 ">
+              <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 ">
                 {
                   techList.map((item, i) => (
                     <div 
@@ -185,7 +185,7 @@ export const BentoGridItem = ({
                             onMouseLeave={() => handleMouseLeave('card', i)}
                             className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
                             lg:opacity-100 border border-[#6a6e75] rounded-sm">
-                              <div className="w-16 h-10 p-1 mx-auto">
+                              <div className="w-16 h-10 p-1 mx-auto text-sm flex justify-center">
                                 {item.title}
                               </div>
                           </div>

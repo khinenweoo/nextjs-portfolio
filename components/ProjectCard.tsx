@@ -11,9 +11,10 @@ interface ProjectCardProps {
   img: string;
   iconLists: string[];
   link: string;
+  gitrepo: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconLists, link }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconLists, link, gitrepo }) => {
 
   const ref = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -36,8 +37,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconList
     
     // Apply rotation (multiply by max desired rotation degrees)
     setRotation({
-      x: yPercent * 12,  
-      y: xPercent * -12
+      x: yPercent * 10,  
+      y: xPercent * -10
     });
 
   }
@@ -58,14 +59,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconList
           className='proj_card relative 
             w-full flex flex-col lg:flex-row xl:flex-row justify-center
             bg-gradient-to-r from-[#0b1018] to-[#1a1f27]
-            rounded-2xl shadow-xl/20 px-4 py-6'
+            rounded-2xl inset-shadow-lg inset-shadow-indigo-500/50 px-4 py-6
+            tranisition-all duration-200 ease-linear'
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             ref={ref}
             style={{
               transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
               transformStyle: 'preserve-3d',
-              perspective: '1000px'
             }}
         >
           <div className='proj_image
@@ -116,15 +117,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconList
               </div>
 
               <div className='flex justify-center items-center gap-2'>
-                <div className='p-3 rounded-full bg-radial'>
-                  <FaLocationArrow className=''
-                    color='#CBACF9' />
-                </div>
-                <div className='p-3 rounded-full bg-radial'>
-                  <FaGithub className=''
-                    color='#CBACF9' />
-                </div>
-
+                <a className='' target="_blank" aria-label="View Live Demo" 
+                  href={link}
+                >
+                  <button
+                    className="px-4 py-3 rounded-full bg-radial shadow-xl shadow-blue-500/50 hover:bg-darkpurple transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    <FaLocationArrow className="text-white" />
+                  </button>
+                </a>
+                <a className='' target="_blank" aria-label="View GitHub Repo" href={gitrepo}
+                >
+                  <button
+                    className="px-4 py-3 rounded-full bg-radial shadow-xl shadow-blue-500/50 hover:bg-darkpurple transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    <FaGithub className='text-white' />
+                  </button>
+                </a>
 
               </div>
             </div>

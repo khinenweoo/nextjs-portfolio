@@ -19,7 +19,7 @@ const Experience = () => {
                 <div 
                     className="h-screen absolute md:left-1/2 left-0 top-0 -translate-x-1/2 overflow-hidden w-[4px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-700 to-transparent"
 
-                    style={{ height: isMobile? 860 : 800 }}
+                    style={{ height: isMobile? 870 : 800 }}
                 >
                     <div className='absolute inset-x-0 top-0 w-[4px] bg-gradient-to-b from-gray-800 to-slate-900'
                         style={{ height: 0, opacity: 0 }}

@@ -41,7 +41,7 @@ const Navbar = () => {
         </Link>
 
         {/* mobile menu */}
-        <div className="mobile-menu block md:hidden transition-all duration-200 ease-in-out">
+        <div className="mobile-menu overflow-hidden block md:hidden transition-all duration-200 ease-in-out">
           {
             !navbarOpen ? (
               <button
@@ -73,18 +73,20 @@ const Navbar = () => {
         </div>
       </div>
       {navbarOpen ? (
-        <ul className="rounded-3xl flex flex-col py-4 pb-8 pl-9 font-semibold items-center transition-all duration-300 ease-in top-[2rem]">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <Link 
-                  onClick={() => setNavbarOpen(false)}
-                  href={link.path} 
-                  className="block py-2 pl-3 pr-3 text-purple md:text-lg sm:text-xl rounded md:p-0 hover:text-white"
-              >{link.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="w-full h-screen overflow-hidden">
+          <ul className="rounded-3xl flex flex-col py-4 pb-8 pl-9 font-semibold items-center transition-all duration-300 ease-in top-[2rem]">
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <Link 
+                    onClick={() => setNavbarOpen(false)}
+                    href={link.path} 
+                    className="block py-2 pl-3 pr-3 text-purple md:text-lg sm:text-xl rounded md:p-0 hover:text-white"
+                >{link.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : null}
     </nav>
   );

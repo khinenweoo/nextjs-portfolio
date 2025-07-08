@@ -12,7 +12,7 @@ const RecentProjects = () => {
             </p>
             <div className="carousel carousel-center bg-neutral rounded-box w-full">
                 {
-                    projects.map(({ id, title, des, img, iconLists, link}) => (
+                    projects.map(({ id, title, des, img, iconLists, link, gitrepo}) => (
                         // Wrap each carousel item in its own component to manage its state
                         <ProjectCard
                             key={id}
@@ -22,6 +22,7 @@ const RecentProjects = () => {
                             img={img}
                             iconLists={iconLists}
                             link={link}
+                            gitrepo={gitrepo}
                         />
                     ))
                 }
