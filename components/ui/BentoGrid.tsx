@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
 // Also install this npm i --save-dev @types/react-lottie
@@ -26,8 +26,7 @@ export const BentoGrid = ({
   return (
     <div
       className={cn(
-        // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
-        "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
+        "grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
         className
       )}
     >
@@ -66,9 +65,18 @@ export const BentoGridItem = ({
   };
 
   const [flippedCard, setFlippedCard] = useState(Array(techList.length).fill(false));
+  //state to store timeouts for each card
+  const [flipTimeouts, setFlipTimeouts] = useState<(NodeJS.Timeout | undefined)[]>([]);
 
   const handleMouseEnter = (listName: string, index: number) => {
     if (listName === 'card') {
+      if (flipTimeouts[index]) {
+        clearTimeout(flipTimeouts[index]);
+        const updatedTimeouts = [...flipTimeouts];
+        updatedTimeouts[index] = undefined;
+        setFlipTimeouts(updatedTimeouts);
+      }
+
       // Create a copy of the current flipped states
       const updated = [...flippedCard];
       // Toggle the flipped state for the clicked card
@@ -78,13 +86,24 @@ export const BentoGridItem = ({
     } 
   }
 
-  const handleMouseLeave = (listName: string, index: number) => {
-    if (listName === 'card') {
+const handleMouseLeave = (listName: string, index: number) => {
+  if (listName === 'card') {
+    // Set a timeout to flip the card back after a delay (e.g., 1000ms = 1 second)
+    const timeoutId = setTimeout(() => {
       const updated = [...flippedCard];
       updated[index] = false;
       setFlippedCard(updated);
-    } 
-  }
+      // Clear the timeout reference after it executes
+      const updatedTimeouts = [...flipTimeouts];
+      updatedTimeouts[index] = undefined;
+      setFlipTimeouts(updatedTimeouts);
+    }, 1000); // Adjust this value for the desired delay in milliseconds
+    // Store the timeout ID
+    const updatedTimeouts = [...flipTimeouts];
+    updatedTimeouts[index] = timeoutId;
+    setFlipTimeouts(updatedTimeouts);
+  } 
+}
 
   return (
 
@@ -143,7 +162,7 @@ export const BentoGridItem = ({
           {/* add text-3xl max-w-96 , remove text-neutral-600 dark:text-neutral-300*/}
           {/* remove mb-2 mt-2 */}
           <div
-            className={`font-sans text-lg lg:text-2xl font-bold z-10 pb-3`}
+            className={`font-sans text-lg md:text-xl lg:text-2xl font-bold z-10 pb-3`}
           >
             {title}
           </div>
@@ -157,7 +176,7 @@ export const BentoGridItem = ({
           {/* Tech stack list div */}
           {id === 5 && (
             <div className="relative mt-4 h-full py-3">
-              <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 ">
+              <div className="w-full grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-2 ">
                 {
                   techList.map((item, i) => (
                     <div 
@@ -169,15 +188,15 @@ export const BentoGridItem = ({
                           <div
                             onMouseEnter={() => handleMouseEnter('card', i)}
                             onMouseLeave={() => handleMouseLeave('card', i)}
-                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-50 
+                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-80 
                             lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
                           >
                             <Image
                               src={item.path}
                               alt={item.title}
-                              width={20}
-                              height={20}
-                              className="w-16 h-10 p-1 mx-auto"
+                              width={40}
+                              height={40}
+                              className="w-14 h-8 p-1 mx-auto"
                             />
                           </div>
                           <div
@@ -185,7 +204,7 @@ export const BentoGridItem = ({
                             onMouseLeave={() => handleMouseLeave('card', i)}
                             className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
                             lg:opacity-100 border border-[#6a6e75] rounded-sm">
-                              <div className="w-16 h-10 p-1 mx-auto text-sm flex justify-center">
+                              <div className="w-14 h-8 p-1 mx-auto text-xs flex justify-center">
                                 {item.title}
                               </div>
                           </div>

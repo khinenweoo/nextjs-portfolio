@@ -10,7 +10,7 @@ export const gridItems = [
     id: 4,
     title: "I'm flexible with time zone communications & locations",
     description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    className: "lg:col-span-2 md:col-span-2 md:row-span-3",
     imgClassName: "relative w-full w-full h-full mx-auto",
     titleClassName: "justify-start",
     img: "",
@@ -18,11 +18,11 @@ export const gridItems = [
   },
   {
     id: 5,
-    title: "Tech stacks",
+    title: "Tech stacks & Tools I use",
     description: "Technologies that help me turn ideas into innovative, functional applications",
-    className: "md:col-span-3 md:row-span-3",
-    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
-    titleClassName: "max-w-full",
+    className: "md:col-span-3 md:row-span-4",
+    imgClassName: "",
+    titleClassName: "",
     img: "",
     spareImg: "",
   },
@@ -30,7 +30,7 @@ export const gridItems = [
     id: 6,
     title: "Do you want to start a project together?",
     description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    className: "lg:col-span-2 md:col-span-2 row-span-3 md:row-span-1 lg:row-span-1",
     imgClassName: "",
     titleClassName: "justify-center lg:max-w-full max-w-[80%] text-center",
     img: "",
@@ -42,7 +42,7 @@ export const projects = [
   {
     id: 1,
     title: "Mern Chat",
-    des: "Mern Chat is a real-time messaging app which uses Socket.io to make every message real-time and pop up fastly. The tech stack used for this app are MERN, Socket.io, TailwindCSS and Daisy UI. It includes authentication with JWT, online user status, user setting features and profile as well",
+    des: "Mern Chat is a real-time messaging app which uses Web Socket to make every message real-time. The tech I used for this app are MERN stack, Socket.io, TailwindCSS and Daisy UI. It includes authentication with JWT, online user status, user setting features and profile as well",
     img: "/p1.svg",
     iconLists: ["/assets/icons/Node.js.svg", "/assets/icons/MongoDB.svg", "/assets/icons/React.svg", "/tail.svg"],
     link: "https://mernlivechat.onrender.com/",
@@ -87,7 +87,7 @@ export const projects = [
   {
     id: 6,
     title: "Mahar NET User App",
-    des: "The app is a mobile app which aims for customers who are using Mahar NET internet services. My role involves to implement Restful API data for this app. The features includes upgrade/downgrade data plans, request relocation, view bills, open complaint ticket and so on.",
+    des: "A mobile app which aims for customers who are using Mahar NET internet services. My role is implementing Restful APIs for this app. The features includes upgrade/downgrade data plans, request relocation, view bills, open complaint ticket and so on.",
     img: "/p6.jpg",
     iconLists: ["/php.svg", "/laravel.svg", "/js.svg", "assets/icons/Livewire.svg",],
     link: "https://play.google.com/store/apps/details?id=com.maharnet.app&hl=en",
@@ -119,7 +119,7 @@ export const workExperience = [
     id: 1,
     title: "Web Developer @ GiGA Link Technology",
     timeline: "Jan 2020 - Feb 2021",
-    desc: "I started my career at GiGA Link, where I built the impactful platform, CBS Learning Hub along with other innovative CMS websites. My contributions and dedication led to a well-earned promotion to Mid-Level Web Developer.",
+    desc: "I started my web development journey at GiGA Link, where I built the impactful platform, CBS Learning Hub along with other innovative CMS websites. It was the time when I started discovering the joy of turning ideas to reality. Developed responsive websites, built interactive user interfaces and smooth user experiences along with the integration of project's functionality features.",
     className: "md:col-span-2",
   },
   {
@@ -188,7 +188,7 @@ export const techList = [
   },
   {
     title: "Wordpress",
-    path: "/assets/icons/Wordpress.svg",
+    path: "/assets/icons/WordPress.png",
   },
   {
     title: "MySQL",
@@ -199,6 +199,10 @@ export const techList = [
     path: "/assets/icons/MongoDB.svg",
   },
   {
+    title: "PostgresSQL",
+    path: "/assets/icons/PostgresSQL.svg",
+  },
+  {
     title: "Git",
     path: "/assets/icons/Git.svg",
   },
@@ -206,5 +210,22 @@ export const techList = [
     title: "Firebase",
     path: "/assets/icons/Firebase.svg",
   },
+  {
+    title: "Docker",
+    path: "/assets/icons/Docker.svg",
+  },
+  {
+    title: "Postman",
+    path: "/assets/icons/Postman.svg",
+  },
+  {
+    title: "TailwindCSS",
+    path: "/assets/icons/Tailwindcss.svg",
+  },
+  {
+    title: "Sass",
+    path: "/assets/icons/Sass.svg",
+  },
+
 ];
 
