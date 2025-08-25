@@ -78,7 +78,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconList
                 alt={title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 90vw"
-                className='rounded-2xl object-cover w-full h-auto'
+                className='rounded-2xl object-fit w-full h-auto'
                 priority
               />
             </div>

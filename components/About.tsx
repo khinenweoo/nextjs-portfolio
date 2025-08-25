@@ -22,7 +22,7 @@ const About = () => {
               both functionality and a great user experience. Let&apos;s collaborate to make your digital vision a reality!
             </p>
 
-            <a href="/assets/Khine_Nwe_Oo_Resume.pdf" target="_blank" className="max-w-max">
+            <a href="/assets/khinenweoo_resume.pdf" target="_blank" className="max-w-max">
               <div className="about_link flex items-center gap-2">
                 <span className="text-purple hover:underline text-lg animate-bounce">Get My Resume </span>
                 <div className="lg:w-18 lg:h-14 w-16 h-14 ">
