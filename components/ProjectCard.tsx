@@ -1,20 +1,24 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { FaLocationArrow } from 'react-icons/fa'
+import { FaBuilding, FaClock, FaLocationArrow } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa'
+import { FaMapMarker } from "react-icons/fa";
 import Image from 'next/image';
 
 interface ProjectCardProps {
   id: number;
   title: string;
-  des: string;
+  company: string;
+  location: string;
+  period: string;
+  short_des: string;
   img: string;
   iconLists: string[];
   link: string;
   gitrepo: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconLists, link, gitrepo }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, company, location, period, short_des, img, iconLists, link, gitrepo }) => {
 
   const ref = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -50,16 +54,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconList
   return (
     <div
       key={id}
-      className="carousel-item relative w-full md:w-4/5 lg:w-4/5 xl:w-4/5 space-x-4 p-6"
+      className="relative w-full"
     >
       <div
-        className="w-full h-full transition ease-in-out duration-150"
+        className="w-full h-full transition-all ease-in-out duration-400"
       >
         <div
           className='proj_card relative 
-            w-full flex flex-col lg:flex-row xl:flex-row justify-center
+            w-full flex flex-col justify-center
             bg-gradient-to-r from-[#0b1018] to-[#1a1f27]
-            rounded-2xl inset-shadow-lg inset-shadow-indigo-500/50 px-4 py-6
+            rounded-md inset-shadow-lg inset-shadow-indigo-500/50 px-4 py-6
             tranisition-all duration-200 ease-linear'
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -70,7 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconList
             }}
         >
           <div className='proj_image
-              relative w-full h-[25vh] sm:h-[30vh] md:h-[35vh] lg:h-auto xl:h-auto lg:w-[55%] xl:w-[55%]
+              relative w-full h-[25vh] sm:h-[30vh] md:h-[35vh]
           '>
             <div className='relative w-full h-full'>
               <Image
@@ -84,17 +88,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, des, img, iconList
             </div>
           </div>
           <div className='proj_body
-              relative w-full lg:w-[45%] xl:w-[45%]
-              mt-6 xl:mt-0
-              px-4 sm:px-6
+              relative w-full 
+              mt-6
+              sm:px-2
           '>
 
-            <h1 className='font-bold lg:text-2xl md:text-xl text-base line-clamp-1'>
+            <h1 className='font-bold lg:text-xl md:text-lg text-md text-base line-clamp-1'>
               {title}
             </h1>
-            <p className='lg:font-normal font-light text-md line-clamp-6'>
-              {des}
+            <p className='text-white-100 text-sm mt-3 mb-4 font-semibold lg:font-normal font-light line-clamp-5'>
+              {short_des}
             </p>
+
+            <div className="proj_type flex flex-row mobile-sm:gap-4 gap-2 items-center mb-2">
+              <FaBuilding className='text-white text-lg' />  <p className="xl:text-base md:text-sm text-xs font-lexend font-normal text-black dark:text-white ">Company: <span className="text-purple font-bold">{company}</span></p>
+            </div>
+            <div className="proj_type flex flex-row mobile-sm:gap-4 gap-2 items-center mb-2">
+              <FaMapMarker className='text-white text-lg' /> <p className="xl:text-base md:text-sm text-xs font-lexend font-normal text-black dark:text-white ">Location: <span className="text-purple font-bold">{location}</span></p>
+            </div>
+            <div className="proj_type flex flex-row mobile-sm:gap-4 gap-2 items-center mb-2">
+              <FaClock className='text-white text-lg' /> <p className="xl:text-base md:text-sm text-xs font-lexend font-normal text-black dark:text-white ">Period: <span className="text-purple text-sm font-bold">{period}</span></p>
+            </div>
+
             <div className='flex items-center justify-between mt-7'>
               <div className='flex items-center'>
                 {iconLists.map((icon, index) => (

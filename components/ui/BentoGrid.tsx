@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
 // Also install this npm i --save-dev @types/react-lottie

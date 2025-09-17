@@ -13,7 +13,7 @@ const About = () => {
           <div className="col-span-2">
             <p className="text-left md:tracking-wide mb-4 lg:text-1xl leading-8">
               Hey, I&apos;m a Full-Stack Developer based in Bangkok, passionate about crafting dynamic and efficient web applications.
-              I have over four years of experience in web development. I'm comfortable working with frameworks and libraries, including
+              I have over four years of experience in web development. I&apos;m comfortable working with frameworks and libraries, including
               Laravel, React.js, Vue.js, Express.js and MERN stack.
             </p>
             <p>
