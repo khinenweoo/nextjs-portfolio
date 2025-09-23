@@ -75,7 +75,7 @@ export const projects = [
     short_des: "ProJix is team's project management app built with React, Laravel and TailWindCSS. The app allows users to create projects and manage associated tasks with role-based access control for Admins and Members. Admins can manage users and assign tasks, while members can do operations like edit tasks and mark their own tasks as complete. Features include role based access and operations, smart task filtering (by name, priority and status) and user-task assignment.",
     img: "/p3.svg",
     iconLists: ["/php.svg", "/laravel.svg", "/re.svg", "/tail.svg"],
-    link: "https://project-creator.laravel.cloud/",
+    link: "http://54.91.45.235/",
     gitrepo: "https://github.com/khinenweoo/Project-Creator-App",
   },
   {
@@ -216,8 +216,8 @@ export const workExperience = [
   {
     id: 3,
     title: "Full Stack Developer @ Mahar Net",
-    timeline: "Jul 2022 - Sep 2024",
-    desc: "Contributed to the in-house software development and maintenance of the web portals. Implemented clean, efficient code and streamlined debugging processes, ensuring smooth project execution and client satisfaction.",
+    timeline: "Jul 2022 - Dec 2024",
+    desc: "Contributed to the in-house software development and maintenance of the web portals. Implemented clean, efficient code and streamlined debugging processes, ensuring smooth project's modules execution and user satisfaction.",
     className: "md:col-span-2",
   },
 ];
