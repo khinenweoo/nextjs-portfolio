@@ -49,7 +49,7 @@ const RecentProjects = () => {
     return (
         <div className="w-full md:px-12 xl:px-20 mt-40" id='projects'>
             <HeadingTitle title='Projects' className='flex-row' />
-            <p className='text-xl text-center text-gray-300 mb-12'>
+            <p className='text-md lg:text-lg text-center text-neutral-700 dark:text-white/80 mb-12'>
                 Explore my portfolio projects, crafted with love, expertise, and creativity.
             </p>
             <div>
@@ -59,7 +59,7 @@ const RecentProjects = () => {
 
                 <form className='mb-4'>
                     <input
-                        className="btn btn-cyan"
+                        className="btn btn-soft btn-default mr-1"
                         type="checkbox"
                         name="frameworks"
                         aria-label="All"
@@ -67,7 +67,7 @@ const RecentProjects = () => {
                         onChange={handleChange}
                     />
                     <input
-                        className="btn"
+                        className="btn btn-soft btn-default mr-1"
                         type="checkbox"
                         name="frameworks"
                         aria-label="Companies"
@@ -75,7 +75,7 @@ const RecentProjects = () => {
                         onChange={handleChange}
                     />
                     <input
-                        className="btn"
+                        className="btn btn-soft btn-default mr-1"
                         type="checkbox"
                         name="frameworks"
                         aria-label="Personal"
@@ -84,14 +84,14 @@ const RecentProjects = () => {
                     />
 
                     <input
-                        className="btn btn-square"
+                        className="btn btn-soft"
                         type="reset"
                         value="×"
                         onClick={handleReset}
                     />
                 </form>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-neutral rounded-box w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 bg-neutral rounded-box w-full">
                 {
                     filteredProjects.map(({ id, title, company, location, period, short_des, img, iconLists, link, gitrepo }) => (
                         // Wrap each carousel item in its own component to manage its state

@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
+import { ModeToggle } from "./ui/ModeToggle";
 
 const navLinks = [
   {
@@ -31,11 +32,11 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed mx-auto top-0 left-0 right-0 z-40 bg-[#111]/80 backdrop-blur-sm xl:px-20">
+    <nav className="fixed mx-auto top-0 left-0 right-0 z-40 bg-gradient-to-r from-orange-50/80 to-violet-50/80 dark:bg-gradient-to-r dark:from-slate-950/80 dark:to-gray-900/80 backdrop-blur-sm xl:px-20">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto py-4">
         <Link
           href={"/"}
-          className="text-xl md:text-xl text-pretty italic text-[#f3f3f3] font-bold"
+          className="text-xl md:text-xl text-pretty italic text-stone-700 dark:text-[#f3f3f3] font-bold"
         >
           K <span className="text-purple">N</span> O
         </Link>
@@ -68,7 +69,8 @@ const Navbar = () => {
               <li key={index}>
                 <NavLink href={link.path} title={link.title} />
               </li>
-            ))}
+            ))}   
+            <ModeToggle />  
           </ul>
         </div>
       </div>
@@ -80,7 +82,7 @@ const Navbar = () => {
                 <Link 
                     onClick={() => setNavbarOpen(false)}
                     href={link.path} 
-                    className="block py-2 pl-3 pr-3 text-purple md:text-lg sm:text-xl rounded md:p-0 hover:text-white"
+                  className="block py-2 pl-3 pr-3 text-purple md:text-lg sm:text-xl rounded md:p-0 hover:text-gray dark:hover:text-white"
                 >{link.title}
                 </Link>
               </li>

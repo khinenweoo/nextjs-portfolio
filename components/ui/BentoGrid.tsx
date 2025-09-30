@@ -109,11 +109,10 @@ const handleMouseLeave = (listName: string, index: number) => {
 
     <div
       className={cn(
-        "row-span-1 relative overflow-hidden rounded-2xl outline outline-1 outline-[#323133] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
+        "row-span-1 relative overflow-hidden rounded-2xl outline outline-1 outline-[#323133] group/bento transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
         className
       )}
       style={{
-        background: "rgb(0,0,0)",
         backgroundColor:
           "linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(29,7,32,1) 59%, rgba(157,127,147,1) 100%)",
       }}
@@ -162,11 +161,11 @@ const handleMouseLeave = (listName: string, index: number) => {
           {/* add text-3xl max-w-96 , remove text-neutral-600 dark:text-neutral-300*/}
           {/* remove mb-2 mt-2 */}
           <div
-            className={`font-sans text-lg md:text-xl lg:text-2xl font-bold z-10 pb-3`}
+            className={`font-sans text-md md:text-lg xl:text-xl text-neutral-700 dark:text-white font-bold z-10`}
           >
             {title}
           </div>
-          <div className="font-sans font-extralight md:text-xs lg:text-base text-sm text-[#C1C2D3]">
+          <div className="md:text-sm xl:text-md text-align mt-4 leading-6 dark:text-white/80">
             {description}
           </div>
 
@@ -188,7 +187,7 @@ const handleMouseLeave = (listName: string, index: number) => {
                           <div
                             onMouseEnter={() => handleMouseEnter('card', i)}
                             onMouseLeave={() => handleMouseLeave('card', i)}
-                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#232323] opacity-80 
+                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs lg:text-base bg-[#f1f1f1] dark:bg-[#232323] opacity-90 
                             lg:opacity-100 text-center border border-[#6a6e75] rounded-sm"
                           >
                             <Image
@@ -202,7 +201,7 @@ const handleMouseLeave = (listName: string, index: number) => {
                           <div
                             onMouseEnter={() => handleMouseEnter('card', i)}
                             onMouseLeave={() => handleMouseLeave('card', i)}
-                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#232323] opacity-50 
+                            className="lg:py-5 lg:px-2 py-4 px-1 text-xs bg-[#f1f1f1] dark:bg-[#232323] opacity-90 
                             lg:opacity-100 border border-[#6a6e75] rounded-sm">
                               <div className="w-14 h-8 p-1 mx-auto text-xs flex justify-center">
                                 {item.title}
@@ -249,7 +248,6 @@ const handleMouseLeave = (listName: string, index: number) => {
                 title={copied ? "Email is Copied!" : "Copy my email address"}
                 icon={<IoCopyOutline />}
                 position="left"
-                otherClasses="!bg-[#161A31]"
                 handleClick={handleCopy}
               />
             </div>

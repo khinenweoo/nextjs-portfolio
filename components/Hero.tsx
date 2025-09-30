@@ -1,67 +1,44 @@
 "use client";
 import React from "react";
-import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import MagicButton from "./ui/MagicButton";
-import { FaLocationArrow } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import Social from "./Social";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <div className="hero mx-auto xl:px-10 pt-40 xl:pt-20">
-      <div>
-        <Spotlight
-          className="-top-40 -left-10 md:-left-32 
-            md:-top-20 h-screen"
-          fill="white"
-        />
-        <Spotlight
-          className="-top-10 left-full h-[80vh] 
-            w-[50vw]"
-          fill="purple"
-        />
-        <Spotlight
-          className="top-28 left-60 h-[80vh]
-            w-[50vw]"
-          fill="blue"
-        />
-      </div>
+    <section className="hero mx-auto xl:px-10 pt-30 lg:mb-0 xl:pt-10">
 
       <div
-        className="h-screen w-full dark:bg-[#000] bg-white 
-            dark:bg-grid-white/[0.01] bg-grid-black/[0.2] 
-            flex justify-center absolute top-0 left-0"
+        className="relative h-screen w-full flex justify-center"
       >
         {/* Radial gradient for the container to give a faded look */}
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-[#000] bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center" />
       </div>
 
       <div className="container">
         <div className="relative flex flex-col md:flex-row items-center justify-center z-10">
           <div className="w-full md:w-6/12 lg:w-7/12 text-left order-1 flex flex-col justify-center">
             <h3 className="h3">
-              Hi, I'm
+              Hi, I&apos;m 
               <TextGenerateEffect className="h1" words="Khine Nwe Oo" />
             </h3>
-            <h3 className="text-xl">Full Stack Developer</h3>
-            <p className="max-w-[500px] text-left mb-6 text-white/80">
-              I excel at crafting elegant digital experiences and I am passionate
-              about leveraging the latest technologies to deliver cutting-edge web
-              solutions.
+            <p className="max-w-[500px] text-base font-medium xl:text-md text-left py-4 dark:text-white/80">
+              A skilled Full-Stack Web Developer with over 5 years of experience in building dynamic, responsive, and high-performing web applications for individuals, startups, and enterprises.
             </p>
             <div className="flex flex-col items-start gap-4">
               <div className="">
                 <Social
                   containerStyles="flex gap-6"
-                  iconStyles="w-9 h-9 border border-purple rounded-full flex justify-center items-center text-purple text-base hover:bg-purple hover:text-primary hover:transition-all duration-500"
+                  iconStyles="w-10 h-10 border border-gray-200 dark:border-purple-500 rounded-full flex justify-center items-center text-slate-700 dark:text-purple text-base shadow-xl hover:bg-violet-300 dark:hover:bg-purple hover:text-primary hover:transition-all duration-500"
                 />
               </div>
               <a href="#about" className="relative w-16">
                 <MagicButton
                   title="Let's Talk"
-                  icon={<FaLocationArrow />}
+                  icon={<FaArrowRight />}
                   position="right"
                 />
               </a>
@@ -73,7 +50,7 @@ const Hero = () => {
             {/* programming icons */}
             <div className="relative flex items-center justify-between w-full h-auto">
               <motion.div
-                className="lg:w-14 lg:h-14 w-14 h-14 absolute left-8 top-8 md:top-20 lg:top-24"
+                className="lg:w-14 lg:h-14 w-14 h-14 absolute left-8 bottom-10 md:top-24 lg:top-20"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
@@ -103,7 +80,7 @@ const Hero = () => {
                 </motion.div>
               </motion.div>
               <motion.div
-                className="lg:w-14 lg:h-14 w-12 h-12 absolute right-0 top-16"
+                className="lg:w-14 lg:h-14 w-12 h-12 absolute right-0 top-20"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
@@ -151,13 +128,12 @@ const Hero = () => {
                     repeatType: "reverse",
                   },
                 }}
-                className="absolute w-full h-auto right-0 -bottom-4 lg:-bottom-28 xl:bottom-20"
-
+                className="absolute w-3/4 h-auto right-14 -bottom-28 lg:-bottom-24 xl:bottom-40"
               >
                 <Image
-                  src="/hero_bg.svg"
+                  src="/dev_hero.webp"
                   alt="icon"
-                  width={290}
+                  width={280}
                   height={260}
                   className="object-center w-full h-auto"
                 />
@@ -166,7 +142,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
