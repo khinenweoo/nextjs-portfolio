@@ -47,7 +47,7 @@ const RecentProjects = () => {
         return false;
     });
     return (
-        <div className="w-full md:px-12 xl:px-20 mt-40" id='projects'>
+        <div className="w-full px-6 md:px-12 xl:px-20 mt-40" id='projects'>
             <HeadingTitle title='Projects' className='flex-row' />
             <p className='text-md lg:text-lg text-center text-neutral-700 dark:text-white/80 mb-12'>
                 Explore my portfolio projects, crafted with love, expertise, and creativity.
