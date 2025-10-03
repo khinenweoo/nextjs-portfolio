@@ -93,7 +93,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, company, location,
             <h1 className='text-slate-800 dark:text-white-100 font-extrabold text-md lg:text-xl md:text-lg'>
               {title}
             </h1>
-            <p className='text-slate-900/80 dark:text-white-100 text-sm mt-3 mb-4 font-semibold lg:font-normal font-light line-clamp-5'>
+            <p className='text-slate-900/80 dark:text-white-100 text-sm mt-3 mb-4 font-semibold lg:font-normal font-light line-clamp-4'>
               {short_des}
             </p>
 
@@ -133,7 +133,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, company, location,
                   href={link}
                 >
                   <button
-                    className="w-full flex py-3 px-4 rounded-lg dark:bg-radial shadow-lg shadow-slate-400 dark:shadow-violet-400/50 hover:bg-violet-200 dark:hover:bg-violet-700 transition-all ease-in duration-300 disabled:pointer-events-none"
+                    className="w-full flex py-3 px-4 dark:bg-radial shadow-lg shadow-slate-400 dark:shadow-violet-400/50 rounded-lg font-semibold border-2 border-gray-200 hover:border-violet-500 hover:bg-violet-100 dark:hover:bg-slate-800 transition-all duration-400 ease-in-out"
                   >
                     <FaArrowRight className="text-slate-800 dark:text-white" /><span className="text-sm pl-2">View</span>
                   </button>

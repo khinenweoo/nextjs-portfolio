@@ -5,7 +5,7 @@ import Photo from "./Photo";
 
 const About = () => {
   return (
-    <section className="relative mx-auto mt-30" id="about">
+    <section className="relative mx-auto xl:px-10 mt-30" id="about">
       <div className='container'>
         <HeadingTitle title="About" className="flex-row-reverse" />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-10">

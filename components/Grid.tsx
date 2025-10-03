@@ -5,7 +5,7 @@ import HeadingTitle from './HeadingTitle'
 
 const Grid = () => {
   return (
-    <section id="skills" className='mx-auto mt-40'>
+    <section id="skills" className='mx-auto xl:px-10 mt-40'>
       <div className='container'>
         <HeadingTitle title='Skills' className='flex-row' />
         <BentoGrid>
